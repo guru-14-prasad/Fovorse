@@ -307,29 +307,6 @@ cards.forEach(card => {
 });
 
 
-// =======================
-// PARALLAX EFFECT
-// =======================
-
-window.addEventListener(
-    "scroll",
-    ()=>{
-
-        const scrollPosition =
-        window.pageYOffset;
-
-        const video =
-        document.querySelector(
-            ".video-container"
-        );
-
-        video.style.transform =
-        `translateY(${
-            scrollPosition * 0.2
-        }px)`;
-    }
-);
-
 
 // =======================
 // BUTTON MAGNET EFFECT
