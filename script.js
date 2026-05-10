@@ -374,3 +374,131 @@ window.addEventListener(
         "1";
     }
 );
+
+// =======================
+// DYNAMIC BACKGROUND
+// =======================
+
+const dynamicBg =
+document.querySelector(
+    ".dynamic-bg"
+);
+
+const sections =
+document.querySelectorAll(
+`
+.section1,
+.section2,
+.section3,
+.section4,
+.section5,
+.section6
+`
+);
+
+window.addEventListener(
+    "scroll",
+    ()=>{
+
+        let current = "";
+
+        sections.forEach(
+            section=>{
+
+            const top =
+            section.offsetTop;
+
+            const height =
+            section.clientHeight;
+
+            if(
+                pageYOffset >=
+                top - height / 3
+            ){
+                current =
+                section.classList[1];
+            }
+        });
+
+        // CHANGE COLORS
+
+        if(current ===
+            "section1"){
+
+            dynamicBg.style.background =
+            `
+            linear-gradient(
+                135deg,
+                rgba(5,15,35,.88),
+                rgba(0,50,100,.50)
+            )
+            `;
+        }
+
+        else if(current ===
+            "section2"){
+
+            dynamicBg.style.background =
+            `
+            linear-gradient(
+                135deg,
+                rgba(0,45,90,.75),
+                rgba(0,140,255,.25)
+            )
+            `;
+        }
+
+        else if(current ===
+            "section3"){
+
+            dynamicBg.style.background =
+            `
+            linear-gradient(
+                135deg,
+                rgba(20,20,80,.75),
+                rgba(110,0,255,.18)
+            )
+            `;
+        }
+
+        else if(current ===
+            "section4"){
+
+            dynamicBg.style.background =
+            `
+            linear-gradient(
+                135deg,
+                rgba(0,20,50,.85),
+                rgba(0,100,255,.20)
+            )
+            `;
+        }
+
+        else if(current ===
+            "section5"){
+
+            dynamicBg.style.background =
+            `
+            linear-gradient(
+                135deg,
+                rgba(0,80,130,.70),
+                rgba(0,180,255,.15)
+            )
+            `;
+        }
+
+        else if(current ===
+            "section6"){
+
+            dynamicBg.style.background =
+            `
+            linear-gradient(
+                135deg,
+                rgba(10,30,80,.85),
+                rgba(0,200,255,.22)
+            )
+            `;
+        }
+
+    }
+);
