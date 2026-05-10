@@ -207,11 +207,35 @@ body{
 
 .hero{
     min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:80px;
+
+    padding:
+    140px 8% 80px;
+
+    max-width:1400px;
+    margin:auto;
+}
+
+.hero-left{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+}
+
+.hero-right{
+    flex:1;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    text-align:center;
-    padding:0 8%;
 }
 
 .hero-content{
@@ -225,29 +249,37 @@ body{
 }
 
 .hero-title{
-    font-size:65px;
-    line-height:1.2;
-    margin:20px 0;
+
+    font-size:72px;
+    line-height:1.1;
+
+    margin:
+    20px 0 25px;
+
+    max-width:700px;
 
     text-shadow:
     0 0 20px
     rgba(77,166,255,.3);
 }
-
 .hero-title span{
     color:#4DA6FF;
 }
 
 .hero-text{
-    font-size:18px;
-    line-height:1.8;
+
+    font-size:20px;
+    line-height:1.9;
+
     color:#d6e6ff;
-    margin-bottom:30px;
+
+    max-width:620px;
+
+    margin-bottom:35px;
 }
 
 .hero-buttons{
     display:flex;
-    justify-content:center;
     gap:20px;
     flex-wrap:wrap;
 }
@@ -255,32 +287,42 @@ body{
 /* SECTIONS */
 
 section{
-    padding:100px 8%;
+    padding:120px 8%;
 }
 
 .section-header{
     text-align:center;
-    margin-bottom:60px;
+    margin-bottom:70px;
 }
 
 .section-header h2{
-    font-size:45px;
+
+    font-size:48px;
+
     margin-bottom:20px;
 }
 
 .section-header p{
-    color:#d3dff0;
+
+    max-width:750px;
+    margin:auto;
+
+    line-height:1.8;
 }
 
 /* GRID */
 
 .about-grid,
+.about-grid,
 .services-grid,
 .portfolio-grid,
 .package-grid,
 .stats-container{
+
     display:grid;
     gap:30px;
+
+    align-items:stretch;
 }
 
 .about-grid,
@@ -298,14 +340,22 @@ section{
 
 /* CARDS */
 
+
 .card,
 .service-card,
 .portfolio-card,
 .package-card,
-.stat-box
+.stat-box,
 .trust-box{
+
     position:relative;
     overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+
+    min-height:260px;
 
     background:
     rgba(255,255,255,.06);
@@ -316,8 +366,8 @@ section{
 
     backdrop-filter:blur(15px);
 
-    padding:30px;
-    border-radius:25px;
+    padding:35px;
+    border-radius:30px;
 
     transition:.5s ease;
 
@@ -561,4 +611,74 @@ section{
     font-size:50px;
     color:#4DA6FF;
     margin-bottom:10px;
+}
+
+/* ==========================
+   SECTION IMAGES ALIGNMENT
+========================== */
+
+.section-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+    position: relative;
+    z-index: 2;
+}
+
+.section-image img {
+    width: 75%;
+    max-width: 750px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 25px;
+
+    /* Background blending effect */
+    mix-blend-mode: screen;
+    opacity: 0.92;
+
+    /* Soft glow */
+    box-shadow:
+        0 0 50px rgba(0, 153, 255, 0.18),
+        0 0 100px rgba(0, 102, 255, 0.12);
+
+    transition: transform 0.5s ease,
+                opacity 0.5s ease;
+}
+
+/* Hover effect */
+.section-image img:hover {
+    transform: scale(1.03);
+    opacity: 1;
+}
+
+/* Left aligned image */
+.section-image.left {
+    justify-content: flex-start;
+    padding-left: 80px;
+}
+
+/* Right aligned image */
+.section-image.right {
+    justify-content: flex-end;
+    padding-right: 80px;
+}
+
+/* Center image */
+.section-image.center {
+    justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section-image img {
+        width: 92%;
+    }
+
+    .section-image.left,
+    .section-image.right {
+        justify-content: center;
+        padding: 0;
+    }
 }
