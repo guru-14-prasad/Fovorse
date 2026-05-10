@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Green - Wellness & Health</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: white; color: #2d5016; overflow-x: hidden; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; position: fixed; width: 100%; top: 0; z-index: 1000; background: rgba(255,255,255,.95); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,.05); }
+        .logo { font-size: 28px; font-weight: 700; color: #6BA82E; }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav a { text-decoration: none; color: #2d5016; transition: 0.3s; font-weight: 500; }
+        nav a:hover { color: #6BA82E; }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 150px 8% 80px; text-align: center; background: linear-gradient(135deg, #F5F5F0 0%, #E8F0E0 100%); }
+        .hero-content h1 { font-size: 72px; margin-bottom: 20px; color: #2d5016; }
+        .hero-content p { font-size: 20px; color: #6BA82E; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .btn { background: #6BA82E; color: white; padding: 15px 40px; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; text-decoration: none; display: inline-block; transition: 0.3s; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(107,168,46,.3); background: #5a9024; }
+        section { padding: 100px 8%; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 48px; margin-bottom: 20px; color: #2d5016; }
+        .section-header p { font-size: 18px; color: #6BA82E; max-width: 600px; margin: auto; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
+        .service-card { background: white; border: 1px solid #D4E5C0; border-radius: 15px; padding: 40px; transition: 0.3s; text-align: center; }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(107,168,46,.15); }
+        .service-card h3 { color: #2d5016; margin-bottom: 15px; font-size: 22px; }
+        .service-card p { color: #6BA82E; line-height: 1.8; }
+        .cta-section { background: linear-gradient(135deg, #6BA82E, #9FD356); text-align: center; padding: 80px 8%; border-radius: 30px; margin: 40px; color: white; }
+        .cta-section h2 { font-size: 48px; margin-bottom: 20px; }
+        .cta-section p { font-size: 18px; margin-bottom: 40px; }
+        .footer { text-align: center; padding: 40px 8%; background: #F5F5F0; border-top: 1px solid #D4E5C0; color: #2d5016; }
+        .back-btn { position: fixed; top: 100px; left: 20px; background: white; border: 2px solid #6BA82E; color: #6BA82E; padding: 10px 20px; border-radius: 50px; text-decoration: none; cursor: pointer; transition: 0.3s; font-weight: 600; }
+        .back-btn:hover { background: #6BA82E; color: white; }
+    </style>
+</head>
+<body>
+
+    <a href="portfolio.html" class="back-btn">← Back to Portfolio</a>
+
+    <header class="navbar">
+        <div class="logo">WellnessHub</div>
+        <nav>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Wellness Journey Starts Here</h1>
+            <p>Transform your life with holistic health programs designed for you.</p>
+            <button class="btn">Begin Today</button>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="section-header">
+            <h2>Our Services</h2>
+            <p>Comprehensive wellness solutions for mind, body, and spirit</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>💪 Fitness Training</h3>
+                <p>Personalized workout plans designed by certified trainers for your goals.</p>
+            </div>
+            <div class="service-card">
+                <h3>🥗 Nutrition Coaching</h3>
+                <p>Evidence-based nutrition guidance tailored to your lifestyle and preferences.</p>
+            </div>
+            <div class="service-card">
+                <h3>🧘 Yoga & Mindfulness</h3>
+                <p>Classes to reduce stress, improve flexibility, and enhance mental clarity.</p>
+            </div>
+            <div class="service-card">
+                <h3>😴 Sleep Optimization</h3>
+                <p>Proven strategies to improve sleep quality and overall recovery.</p>
+            </div>
+            <div class="service-card">
+                <h3>🏥 Health Consulting</h3>
+                <p>Expert guidance from healthcare professionals for optimal wellness.</p>
+            </div>
+            <div class="service-card">
+                <h3>📱 Mobile App</h3>
+                <p>Track your progress and access resources anytime, anywhere.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Start Your Wellness Transformation</h2>
+        <p>Join thousands on their path to better health</p>
+        <button class="btn" style="background: white; color: #6BA82E;">Get Started Free</button>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 WellnessHub. Your health, our priority.</p>
+    </footer>
+
+</body>
+</html>

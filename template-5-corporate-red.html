@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Red - Enterprise & Finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #f5f5f5; color: #1a1a1a; overflow-x: hidden; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; position: fixed; width: 100%; top: 0; z-index: 1000; background: white; box-shadow: 0 2px 10px rgba(0,0,0,.1); }
+        .logo { font-size: 28px; font-weight: 700; color: #DC143C; }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav a { text-decoration: none; color: #1a1a1a; transition: 0.3s; font-weight: 500; }
+        nav a:hover { color: #DC143C; }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 150px 8% 80px; background: linear-gradient(135deg, #1a1a1a, #333); color: white; }
+        .hero-content h1 { font-size: 72px; margin-bottom: 20px; }
+        .hero-content p { font-size: 20px; color: #ccc; margin-bottom: 40px; max-width: 600px; }
+        .btn { background: #DC143C; color: white; padding: 15px 40px; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; text-decoration: none; display: inline-block; transition: 0.3s; }
+        .btn:hover { background: #B01030; box-shadow: 0 5px 15px rgba(220,20,60,.3); }
+        section { padding: 100px 8%; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 48px; margin-bottom: 20px; color: #1a1a1a; }
+        .section-header p { font-size: 18px; color: #666; max-width: 600px; margin: auto; }
+        .solutions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .solution-card { background: white; border-left: 4px solid #DC143C; border-radius: 5px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,.05); transition: 0.3s; }
+        .solution-card:hover { box-shadow: 0 10px 30px rgba(220,20,60,.15); transform: translateY(-5px); }
+        .solution-card h3 { color: #DC143C; margin-bottom: 15px; font-size: 22px; }
+        .solution-card p { color: #666; line-height: 1.8; }
+        .features { background: linear-gradient(135deg, #1a1a1a, #333); color: white; padding: 80px 8%; }
+        .features h2 { font-size: 48px; text-align: center; margin-bottom: 60px; }
+        .features-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .features-list li { list-style: none; padding-left: 40px; position: relative; font-size: 18px; line-height: 1.8; }
+        .features-list li:before { content: "✓"; position: absolute; left: 0; color: #DC143C; font-weight: 700; font-size: 24px; }
+        .cta { background: white; text-align: center; padding: 80px 8%; }
+        .cta h2 { font-size: 48px; margin-bottom: 20px; color: #1a1a1a; }
+        .cta p { font-size: 18px; margin-bottom: 40px; color: #666; }
+        .footer { text-align: center; padding: 40px 8%; background: #1a1a1a; color: white; border-top: 4px solid #DC143C; }
+        .back-btn { position: fixed; top: 100px; left: 20px; background: white; border: 2px solid #DC143C; color: #DC143C; padding: 10px 20px; border-radius: 5px; text-decoration: none; cursor: pointer; transition: 0.3s; font-weight: 600; }
+        .back-btn:hover { background: #DC143C; color: white; }
+    </style>
+</head>
+<body>
+
+    <a href="portfolio.html" class="back-btn">← Back to Portfolio</a>
+
+    <header class="navbar">
+        <div class="logo">CorpFinance</div>
+        <nav>
+            <ul>
+                <li><a href="#solutions">Solutions</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Enterprise Financial Solutions</h1>
+            <p>Trusted by Fortune 500 companies. Secure, scalable, and built for enterprise.</p>
+            <button class="btn">Request Demo</button>
+        </div>
+    </section>
+
+    <section id="solutions">
+        <div class="section-header">
+            <h2>Our Solutions</h2>
+            <p>Comprehensive software for modern enterprises</p>
+        </div>
+        <div class="solutions-grid">
+            <div class="solution-card">
+                <h3>Portfolio Management</h3>
+                <p>Advanced tools for investment tracking and reporting with real-time analytics.</p>
+            </div>
+            <div class="solution-card">
+                <h3>Risk Management</h3>
+                <p>Enterprise-grade risk assessment and compliance monitoring systems.</p>
+            </div>
+            <div class="solution-card">
+                <h3>Trading Platform</h3>
+                <p>High-speed trading infrastructure with institutional-grade security.</p>
+            </div>
+            <div class="solution-card">
+                <h3>Wealth Management</h3>
+                <p>Integrated solution for managing client portfolios and relationships.</p>
+            </div>
+            <div class="solution-card">
+                <h3>Reporting & Analytics</h3>
+                <p>Comprehensive reporting tools with custom analytics and insights.</p>
+            </div>
+            <div class="solution-card">
+                <h3>Integration Services</h3>
+                <p>Seamless integration with existing systems and third-party platforms.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2>Why Choose Us</h2>
+        <ul class="features-list">
+            <li>Bank-level security and encryption</li>
+            <li>99.99% uptime guarantee</li>
+            <li>24/7 dedicated support</li>
+            <li>Regulatory compliance certified</li>
+            <li>Scalable infrastructure</li>
+            <li>Custom integration available</li>
+        </ul>
+    </section>
+
+    <section class="cta">
+        <h2>Ready to Transform Your Business?</h2>
+        <p>Join industry leaders using our platform</p>
+        <button class="btn">Schedule a Demo</button>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 CorpFinance. Enterprise Financial Solutions.</p>
+    </footer>
+
+</body>
+</html>
