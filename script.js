@@ -266,7 +266,8 @@ document.querySelectorAll(
 .service-card,
 .portfolio-card,
 .package-card,
-.stat-box
+.stat-box,
+.trust-box
 `
 );
 

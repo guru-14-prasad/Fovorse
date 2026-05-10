@@ -302,7 +302,8 @@ section{
 .service-card,
 .portfolio-card,
 .package-card,
-.stat-box{
+.stat-box
+.trust-box{
     position:relative;
     overflow:hidden;
 
@@ -340,9 +341,13 @@ section{
 
 /* SHINE EFFECT */
 
+.card::before,
 .service-card::before,
 .portfolio-card::before,
-.package-card::before{
+.package-card::before,
+.stat-box::before,
+.trust-box::before{
+
     content:"";
     position:absolute;
 
@@ -363,9 +368,13 @@ section{
     transition:1s;
 }
 
+.card:hover::before,
 .service-card:hover::before,
 .portfolio-card:hover::before,
-.package-card:hover::before{
+.package-card:hover::before,
+.stat-box:hover::before,
+.trust-box:hover::before{
+
     top:100%;
     left:100%;
 }
@@ -547,4 +556,9 @@ section{
     background 1.2s ease;
 
     pointer-events:none;
+}
+.service-card h2{
+    font-size:50px;
+    color:#4DA6FF;
+    margin-bottom:10px;
 }
