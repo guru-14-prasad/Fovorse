@@ -1,6 +1,25 @@
 // =======================
-// NAVBAR SCROLL EFFECT
+// VIDEO INITIALIZATION
 // =======================
+
+// Initialize first video as active
+document.addEventListener("DOMContentLoaded", () => {
+    const firstVideo = document.getElementById("bgVideo1");
+    if (firstVideo) {
+        firstVideo.classList.add("active");
+        // Ensure video is muted and can autoplay
+        firstVideo.muted = true;
+        firstVideo.play().catch(e => console.log("Video autoplay failed:", e));
+    }
+
+    // Add error handling for videos
+    const videos = document.querySelectorAll('.bg-video');
+    videos.forEach(video => {
+        video.addEventListener('error', (e) => {
+            console.log('Video failed to load:', e.target.src);
+        });
+    });
+});
 
 const navbar = document.querySelector(".navbar");
 
@@ -194,36 +213,70 @@ window.addEventListener("load", () => {
 // SMOOTH VIDEO BACKGROUND TRANSITIONS
 // =======================
 
-const bgVideo = document.getElementById("bgVideo");
+const bgVideos = [
+    document.getElementById("bgVideo1"),
+    document.getElementById("bgVideo2"),
+    document.getElementById("bgVideo3")
+];
+
+let currentVideoIndex = 0;
 
 window.addEventListener("scroll", () => {
-    // Get all section elements
     const sections = document.querySelectorAll("section");
-    let currentSection = 0;
+    let currentSectionIndex = 0;
 
+    // Find which section is currently most visible
     sections.forEach((section, index) => {
-        const top = section.offsetTop;
-        const height = section.clientHeight;
+        const rect = section.getBoundingClientRect();
+        const sectionTop = rect.top;
+        const sectionHeight = rect.height;
+        const windowHeight = window.innerHeight;
 
-        if(window.pageYOffset >= top - height / 3){
-            currentSection = index;
+        // Check if section is in viewport (with some tolerance)
+        if (sectionTop <= windowHeight / 2 && sectionTop + sectionHeight >= windowHeight / 2) {
+            currentSectionIndex = index;
         }
     });
 
-    // Smooth video playback rate adjustment based on scroll
-    if(bgVideo){
-        const scrollPercent = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        const playbackRate = 0.5 + (scrollPercent / 200); // Rate between 0.5 and 1
-        bgVideo.playbackRate = Math.min(playbackRate, 1);
+    // Map sections to videos (distribute across available videos)
+    let newVideoIndex;
+    const totalSections = sections.length;
+
+    if (currentSectionIndex < totalSections / 3) {
+        newVideoIndex = 0; // First third of sections: bg-video.mp4
+    } else if (currentSectionIndex < (totalSections / 3) * 2) {
+        newVideoIndex = 1; // Second third of sections: bg-video-2.mp4
+    } else {
+        newVideoIndex = 2; // Last third of sections: bg-video-3.mp4
     }
 
-    // Optional: Change video opacity based on section
-    const videoContainer = document.querySelector(".video-container");
-    if(videoContainer){
-        const overlay = videoContainer.querySelector(".overlay");
-        // Subtle opacity changes
-        overlay.style.opacity = (0.7 + (currentSection * 0.02)) % 0.95;
+    // Switch video if needed
+    if (newVideoIndex !== currentVideoIndex) {
+        // Pause current video to save resources
+        bgVideos[currentVideoIndex].pause();
+
+        // Remove active class from current video
+        bgVideos[currentVideoIndex].classList.remove("active");
+
+        // Add active class to new video
+        bgVideos[newVideoIndex].classList.add("active");
+
+        // Ensure new video is playing
+        if (bgVideos[newVideoIndex].paused) {
+            bgVideos[newVideoIndex].play().catch(e => console.log("Video play failed:", e));
+        }
+
+        // Update current index
+        currentVideoIndex = newVideoIndex;
     }
+
+    // Optional: Adjust playback rate for subtle effect
+    const playbackRate = 0.8 + (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 0.4; // Rate between 0.8 and 1.2
+    bgVideos.forEach(video => {
+        if (video) {
+            video.playbackRate = Math.min(playbackRate, 1.2);
+        }
+    });
 });
 
 // =======================

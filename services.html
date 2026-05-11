@@ -17,13 +17,17 @@
 
 <body>
 
-    <!-- VIDEO -->
+    <!-- VIDEO BACKGROUND WITH SMOOTH TRANSITIONS -->
     <div class="video-container">
-        <video autoplay muted loop playsinline>
-            <source src="bg-video.mp4"
-                type="video/mp4">
+        <video id="bgVideo1" class="bg-video active" autoplay muted playsinline loop>
+            <source src="bg-video.mp4" type="video/mp4">
         </video>
-
+        <video id="bgVideo2" class="bg-video" autoplay muted playsinline loop>
+            <source src="bg-video-2.mp4" type="video/mp4">
+        </video>
+        <video id="bgVideo3" class="bg-video" autoplay muted playsinline loop>
+            <source src="bg-video-3.mp4" type="video/mp4">
+        </video>
         <div class="overlay"></div>
     </div>
 
@@ -66,7 +70,7 @@
                 </li>
 
                 <li>
-                    <a href="whyus.html">
+                    <a href="why-us.html">
                         Why Us
                     </a>
                 </li>

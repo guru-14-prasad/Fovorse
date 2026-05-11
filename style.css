@@ -32,6 +32,13 @@ body{
     top:50%;
     left:50%;
     transform: translate(-50%, -50%) scale(1.35);
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    filter: brightness(1.15) saturate(1.08);
+}
+
+.video-container video.active{
+    opacity: 1;
 }
 
 .overlay{
@@ -40,7 +47,7 @@ body{
     height:100%;
     top:0;
     left:0;
-    background: linear-gradient(rgba(5,15,35,.90), rgba(6,18,40,.94));
+    background: linear-gradient(rgba(5,15,35,.70), rgba(6,18,40,.75));
 }
 
 /* PARTICLES */
