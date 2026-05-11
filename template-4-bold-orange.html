@@ -1,288 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bold Orange Template | Fovorse</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>ShopMax - E-Commerce Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #001a33;
-            --accent-color: #FF8C42;
-            --button-color: #FF8C42;
-            --light-text: #ffd9b3;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #001a33, #1a3d5c); color: white; }
+        
+        .video-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; }
+        .video-bg video { width: 100%; height: 100%; object-fit: cover; opacity: 0.3; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: linear-gradient(135deg, rgba(0,26,51,0.9), rgba(26,61,92,0.9)); z-index: -1; }
+        
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(0,26,51,0.85); backdrop-filter: blur(10px); border-bottom: 2px solid #FF8C42; }
+        .brand { font-size: 26px; font-weight: 900; color: #FF8C42; letter-spacing: 1px; }
+        nav { display: flex; gap: 35px; }
+        nav a { color: #ffd9b3; text-decoration: none; transition: .3s; font-size: 14px; font-weight: 500; }
+        nav a:hover { color: #FF8C42; }
+        .cart-icon { font-size: 24px; cursor: pointer; }
+        
+        .banner { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 80px; position: relative; overflow: hidden; }
+        .banner::before { content: '🛍️'; position: absolute; font-size: 200px; opacity: 0.1; animation: float 6s ease-in-out infinite; }
+        .banner-content { position: relative; z-index: 10; }
+        .banner-content h1 { font-size: 72px; line-height: 1.2; margin-bottom: 20px; color: #FF8C42; text-shadow: 0 0 30px rgba(255,140,66,0.2); font-weight: 900; }
+        .banner-content p { font-size: 18px; color: #ffd9b3; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .banner-buttons { display: flex; gap: 20px; justify-content: center; }
+        .btn-primary { background: linear-gradient(135deg, #FF8C42, #FF7320); color: white; padding: 14px 40px; border-radius: 50px; border: none; cursor: pointer; font-weight: 700; font-size: 14px; transition: .3s; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(255,140,66,0.3); }
+        
+        .featured { padding: 120px 8%; }
+        .section-title { font-size: 45px; color: #FF8C42; margin-bottom: 60px; text-align: center; font-weight: 900; }
+        .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        .product-card { background: rgba(255,140,66,0.08); border: 1px solid rgba(255,140,66,0.15); border-radius: 10px; overflow: hidden; transition: .4s; cursor: pointer; }
+        .product-card:hover { transform: translateY(-10px); border-color: #FF8C42; box-shadow: 0 20px 40px rgba(255,140,66,0.2); }
+        .product-image { height: 200px; background: linear-gradient(135deg, #001a33, #FF8C42); display: flex; align-items: center; justify-content: center; font-size: 80px; }
+        .product-info { padding: 20px; }
+        .product-info h3 { font-size: 16px; color: #ffd9b3; margin-bottom: 10px; }
+        .product-price { font-size: 22px; color: #FF8C42; font-weight: 900; margin-bottom: 15px; }
+        .product-rating { color: #ffa366; font-size: 13px; margin-bottom: 10px; }
+        .product-btn { background: #FF8C42; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; font-size: 12px; width: 100%; }
+        
+        .reviews { padding: 120px 8%; background: rgba(255,140,66,0.03); }
+        .reviews h2 { font-size: 45px; color: #FF8C42; margin-bottom: 60px; text-align: center; font-weight: 900; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .review { background: rgba(255,140,66,0.08); padding: 30px; border-radius: 10px; border-left: 4px solid #FF8C42; }
+        .review-stars { color: #FFD700; margin-bottom: 15px; font-size: 14px; }
+        .review-text { color: #ffd9b3; font-size: 14px; margin-bottom: 15px; line-height: 1.6; }
+        .review-author { color: #FF8C42; font-weight: 700; font-size: 13px; }
+        
+        .deals { padding: 100px 8%; background: linear-gradient(135deg, #FF8C42, #FF7320); text-align: center; }
+        .deals h2 { font-size: 48px; margin-bottom: 15px; }
+        .deals p { font-size: 18px; margin-bottom: 40px; opacity: 0.95; }
+        
+        footer { padding: 50px 8%; text-align: center; background: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,140,66,0.2); }
+        footer h3 { color: #FF8C42; margin-bottom: 10px; font-weight: 900; }
+        footer p { color: #ffa366; font-size: 13px; }
+        
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        
+        @media (max-width: 900px) {
+            .products-grid { grid-template-columns: repeat(2, 1fr); }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .banner-content h1 { font-size: 45px; }
         }
-
-        .logo { color: var(--accent-color) !important; }
-        .btn { background: linear-gradient(135deg, var(--button-color), #FF7320) !important; }
-        .btn:hover { box-shadow: 0 10px 25px rgba(255, 140, 66, 0.4) !important; }
-        .hero-title span { color: var(--accent-color) !important; }
-        .hero-title { text-shadow: 0 0 20px rgba(255, 140, 66, 0.3) !important; }
-        .page-hero-content h1 { color: var(--accent-color) !important; }
-        .btn-outline { border-color: var(--accent-color) !important; color: var(--accent-color) !important; }
-        .btn-outline:hover { background: var(--accent-color) !important; color: #001a33 !important; }
-        .counter { color: var(--accent-color) !important; }
-        .section-header h2 { color: var(--accent-color) !important; }
-        .service-card h3 { color: var(--light-text) !important; }
-        .tagline { color: var(--light-text) !important; }
-        .service-tag { background: rgba(255, 140, 66, 0.2) !important; color: var(--accent-color) !important; }
-        .nav-links a:hover { color: var(--accent-color) !important; }
-        .nav-links a::after { background: var(--accent-color) !important; }
-        .detail-item h3 { color: var(--accent-color) !important; }
-        .social-icon { background: rgba(255, 140, 66, 0.2) !important; color: var(--accent-color) !important; }
-        .social-icon:hover { background: var(--accent-color) !important; color: #001a33 !important; }
-        .form-group input:focus, .form-group textarea:focus { border-color: var(--accent-color) !important; box-shadow: 0 0 20px rgba(255, 140, 66, 0.2) !important; }
-        .contact-info h2 { color: var(--accent-color) !important; }
-        .service-header-box h2 { color: var(--accent-color) !important; }
-        .package-price { color: var(--accent-color) !important; }
-        .featured { border-color: var(--accent-color) !important; }
-        .popular-badge { background: var(--accent-color) !important; color: #001a33 !important; }
-        .template-explanation { background: rgba(255, 140, 66, 0.05) !important; border-left-color: var(--accent-color) !important; }
-        .template-explanation h4 { color: var(--accent-color) !important; }
-        .comparison-table th { background: rgba(255, 140, 66, 0.1) !important; color: var(--accent-color) !important; border-color: rgba(255, 140, 66, 0.2) !important; }
-        .footer h2 { color: var(--accent-color) !important; }
-        .footer-links a:hover { color: var(--accent-color) !important; }
-        .card::before, .service-card::before { background: linear-gradient(transparent, rgba(255, 255, 255, 0.08), transparent) !important; }
-        .card:hover, .service-card:hover { box-shadow: 0 15px 40px rgba(255, 140, 66, 0.2) !important; }
     </style>
 </head>
-
 <body>
-
-    <!-- VIDEO BACKGROUND WITH SMOOTH TRANSITIONS -->
-    <div class="video-container">
-        <video id="bgVideo" autoplay muted playsinline>
-            <source src="bg-video.mp4" type="video/mp4">
+    <div class="video-bg">
+        <video autoplay muted loop playsinline>
+            <source src="bg-video-ecommerce.mp4" type="video/mp4">
         </video>
-        <div class="overlay"></div>
     </div>
+    <div class="overlay"></div>
 
-    <!-- PARTICLES -->
-    <div class="particles"></div>
-
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <div class="logo">FOVORSE</div>
+    <header>
+        <div class="brand">ShopMax</div>
         <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="packages.html">Packages</a></li>
-                <li><a href="why-us.html">Why Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+            <a href="#featured">Shop</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#deals">Deals</a>
+            <a href="#contact">Help</a>
         </nav>
-        <a href="contact.html" class="btn">Let's Connect</a>
+        <div class="cart-icon">🛒</div>
     </header>
 
-    <!-- HERO SECTION (SECTION 1) -->
-    <section class="hero section1 reveal" id="home">
-        <div class="hero-left">
-            <span class="tagline">STRATEGY • DEVELOPMENT • AI AUTOMATION</span>
-            <h1 class="hero-title">
-                We Don't Just Run Campaigns.
-                <span>We Create Demand.</span>
-            </h1>
-            <p class="hero-text">
-                Fovorse helps businesses scale smarter through analytics,
-                premium web development, AI automation and growth strategy.
-            </p>
-            <div class="hero-buttons">
-                <a href="services.html" class="btn">Explore Services</a>
-                <a href="contact.html" class="btn-outline">Get Started</a>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- TRUST SECTION (SECTION 2) -->
-    <section class="trust section2 reveal">
-        <div class="section-header">
-            <h2>Trusted By Businesses That Want Growth</h2>
-            <p>From startups to scaling businesses, Fovorse helps companies make smarter digital decisions.</p>
-        </div>
-        <div class="stats-container">
-            <div class="service-card">
-                <h2 class="counter" data-target="120">0</h2>
-                <p>Projects Delivered</p>
-            </div>
-            <div class="service-card">
-                <h2 class="counter" data-target="95">0</h2>
-                <p>Client Retention</p>
-            </div>
-            <div class="service-card">
-                <h2 class="counter" data-target="350">0</h2>
-                <p>Average ROAS</p>
-            </div>
-            <div class="service-card">
-                <h2>24/7</h2>
-                <p>Support</p>
+    <section class="banner">
+        <div class="banner-content">
+            <h1>Mega Sale Event</h1>
+            <p>Up to 70% OFF on trending products. Shop now and save big on your favorite brands!</p>
+            <div class="banner-buttons">
+                <button class="btn-primary">Shop Now</button>
+                <button style="background: transparent; border: 2px solid #FF8C42; color: #FF8C42; padding: 12px 35px; border-radius: 50px; cursor: pointer; font-weight: 700;">View Deals</button>
             </div>
         </div>
     </section>
 
-    <!-- ABOUT SECTION (SECTION 3) -->
-    <section class="results section3 reveal">
-        <div class="section-content-box">
-            <h2>Results Over Output. Strategy Over Guesswork.</h2>
-            <p>
-                Every decision starts with data. Every output is backed by strategy.
-                No vanity metrics. No random execution. Just measurable business growth.
-            </p>
-        </div>
-        <div class="results-grid">
-            <div class="card">
-                <h3>Data First</h3>
-                <p>Every campaign and business decision begins with research and analytics.</p>
+    <section class="featured" id="featured">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <h3>Tech Gadget Pro</h3>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ (245 reviews)</div>
+                    <div class="product-price">$199.99</div>
+                    <button class="product-btn">Add to Cart</button>
+                </div>
             </div>
-            <div class="card">
-                <h3>Growth Focused</h3>
-                <p>We focus on conversion, revenue and customer growth metrics.</p>
+            <div class="product-card">
+                <div class="product-image">👜</div>
+                <div class="product-info">
+                    <h3>Designer Bag</h3>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ (189 reviews)</div>
+                    <div class="product-price">$299.99</div>
+                    <button class="product-btn">Add to Cart</button>
+                </div>
             </div>
-            <div class="card">
-                <h3>AI Powered</h3>
-                <p>Intelligent automation helps businesses scale faster and smarter.</p>
+            <div class="product-card">
+                <div class="product-image">👟</div>
+                <div class="product-info">
+                    <h3>Premium Sneakers</h3>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ (312 reviews)</div>
+                    <div class="product-price">$149.99</div>
+                    <button class="product-btn">Add to Cart</button>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- PROCESS SECTION (SECTION 4) -->
-    <section class="process section4 reveal">
-        <div class="section-header">
-            <h2>How We Work</h2>
-            <p>Strategy-led execution built for measurable growth.</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>01 Research</h3>
-                <p>We analyze your market, competitors and target audience deeply.</p>
-            </div>
-            <div class="service-card">
-                <h3>02 Strategy</h3>
-                <p>A clear roadmap designed specifically for your business growth.</p>
-            </div>
-            <div class="service-card">
-                <h3>03 Execution</h3>
-                <p>Marketing, development and automation implementation with precision.</p>
-            </div>
-            <div class="service-card">
-                <h3>04 Growth</h3>
-                <p>Continuous optimization through analytics and actionable insights.</p>
+            <div class="product-card">
+                <div class="product-image">⌚</div>
+                <div class="product-info">
+                    <h3>Smart Watch</h3>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ (156 reviews)</div>
+                    <div class="product-price">$249.99</div>
+                    <button class="product-btn">Add to Cart</button>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SERVICES SECTION (SECTION 5) -->
-    <section class="services section5 reveal" id="services">
-        <div class="section-header">
-            <h2>What We Do</h2>
-            <p>Strategy before execution. Every service built to deliver results.</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Strategy-Driven Digital Marketing</h3>
-                <p>SEO, Paid Ads, Social Media, Email Marketing and Analytics.</p>
+    <section class="reviews" id="reviews">
+        <h2>What Customers Love</h2>
+        <div class="reviews-grid">
+            <div class="review">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">"Amazing quality products and super fast shipping! My order arrived in 2 days. Highly recommended!"</div>
+                <div class="review-author">- Michelle T.</div>
             </div>
-            <div class="service-card">
-                <h3>Conversion Focused Web Development</h3>
-                <p>High-performing websites optimized for speed and leads.</p>
+            <div class="review">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">"Best online shopping experience. Customer service is responsive and helpful. Will shop again!"</div>
+                <div class="review-author">- Robert K.</div>
             </div>
-            <div class="service-card">
-                <h3>Full Stack Development</h3>
-                <p>Web apps, SaaS systems, APIs and scalable solutions.</p>
-            </div>
-            <div class="service-card">
-                <h3>Market Research</h3>
-                <p>Competitor benchmarking, industry analysis and customer insights.</p>
-            </div>
-            <div class="service-card">
-                <h3>AI Automation</h3>
-                <p>CRM automation, workflow systems and AI tools implementation.</p>
-            </div>
-            <div class="service-card">
-                <h3>Growth Strategy</h3>
-                <p>Revenue-focused scaling strategies tailored to your business.</p>
-            </div>
-        </div>
-        <div class="view-more-section">
-            <a href="services.html" class="btn">View All Services</a>
-        </div>
-    </section>
-
-    <!-- PORTFOLIO SECTION (SECTION 6) -->
-    <section class="portfolio section6 reveal" id="portfolio">
-        <div class="section-header">
-            <h2>Work That Speaks Louder Than Promises</h2>
-            <p>Every project started with a challenge and backed by strategy.</p>
-        </div>
-        <div class="portfolio-grid">
-            <div class="portfolio-card">
-                <h3>E-Commerce Revenue Scale</h3>
-                <p>210% revenue growth in 5 months using SEO and paid campaigns.</p>
-            </div>
-            <div class="portfolio-card">
-                <h3>SaaS Landing Page Overhaul</h3>
-                <p>Conversion rate increased from 1.2% to 4.7% with strategic redesign.</p>
-            </div>
-            <div class="portfolio-card">
-                <h3>AI Workflow Automation</h3>
-                <p>Automated 60% of repetitive tasks and doubled monthly output.</p>
-            </div>
-        </div>
-        <div class="view-more-section">
-            <a href="portfolio.html" class="btn">View Portfolio & Templates</a>
-        </div>
-    </section>
-
-    <!-- TESTIMONIALS SECTION -->
-    <section class="testimonials reveal">
-        <div class="section-header">
-            <h2>What Clients Say</h2>
-            <p>Trusted by businesses that want measurable growth.</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card testimonial-card">
-                <p>"Fovorse completely transformed our digital strategy and doubled our leads."</p>
-                <h4>— Startup Founder</h4>
-            </div>
-            <div class="service-card testimonial-card">
-                <p>"Finally an agency that focuses on actual results, not vanity metrics."</p>
-                <h4>— SaaS Company</h4>
-            </div>
-            <div class="service-card testimonial-card">
-                <p>"Our revenue doubled in under six months. Best decision we made."</p>
-                <h4>— E-commerce Brand</h4>
+            <div class="review">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">"Unbeatable prices and great selection. This is now my go-to online store for everything."</div>
+                <div class="review-author">- Lisa J.</div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT CTA -->
-    <section class="contact-cta reveal">
-        <div class="section-header">
-            <h2>Ready to Scale Your Business?</h2>
-            <p>Let's discuss your growth strategy and how we can help you achieve your goals.</p>
-        </div>
-        <a href="contact.html" class="btn btn-large">Start Your Journey</a>
+    <section class="deals" id="deals">
+        <h2>Limited Time Flash Sale</h2>
+        <p>Only 24 hours to grab these exclusive deals!</p>
+        <button style="background: white; color: #FF8C42; padding: 14px 40px; border-radius: 50px; border: none; cursor: pointer; font-weight: 700; font-size: 15px;">Shop Flash Sale</button>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <h2>FOVORSE</h2>
-        <p>Strategy-led growth partner helping businesses scale smarter.</p>
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="services.html">Services</a>
-            <a href="portfolio.html">Portfolio</a>
-            <a href="contact.html">Contact</a>
-        </div>
-        <p>© 2026 Fovorse. All Rights Reserved.</p>
+    <footer id="contact">
+        <h3>ShopMax</h3>
+        <p>Your trusted online shopping destination • 2026</p>
     </footer>
 
     <script src="script.js"></script>
-
 </body>
-
 </html>

@@ -1,288 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Gradient Purple Template | Fovorse</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>CreativeHub - Design Studio Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #1a0033;
-            --accent-color: #FFD700;
-            --button-color: #9D4EDD;
-            --light-text: #e6ccff;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #0a0015, #2d1b4e); color: white; }
+        
+        .video-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; }
+        .video-bg video { width: 100%; height: 100%; object-fit: cover; opacity: 0.25; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: linear-gradient(135deg, rgba(10,0,21,0.92), rgba(45,27,78,0.92)); z-index: -1; }
+        
+        header { display: flex; justify-content: space-between; align-items: center; padding: 25px 8%; position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10,0,21,0.8); backdrop-filter: blur(10px); }
+        .brand { font-size: 24px; font-weight: 900; color: #FFD700; letter-spacing: 2px; font-family: 'Playfair Display', serif; }
+        nav { display: flex; gap: 35px; }
+        nav a { color: #e6ccff; text-decoration: none; transition: .3s; font-size: 14px; }
+        nav a:hover { color: #FFD700; }
+        .cta-btn { background: linear-gradient(135deg, #9D4EDD, #c77dff); color: white; padding: 12px 24px; border-radius: 5px; border: none; cursor: pointer; font-weight: 600; font-size: 13px; }
+        
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 160px 8% 80px; }
+        .hero-content { max-width: 700px; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 72px; line-height: 1.1; margin-bottom: 20px; color: #FFD700; }
+        .hero-content p { font-size: 18px; color: #d9b3ff; line-height: 1.8; margin-bottom: 40px; }
+        .hero-content > div { display: flex; gap: 20px; }
+        
+        .portfolio { padding: 120px 8%; background: rgba(157,78,221,0.03); }
+        .portfolio h2 { font-family: 'Playfair Display', serif; font-size: 54px; color: #FFD700; margin-bottom: 70px; text-align: center; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        .portfolio-item { background: linear-gradient(135deg, rgba(157,78,221,0.1), rgba(199,125,255,0.05)); border: 1px solid rgba(199,125,255,0.2); padding: 0; border-radius: 5px; overflow: hidden; transition: .4s; cursor: pointer; }
+        .portfolio-item:hover { transform: scale(1.02); border-color: #FFD700; }
+        .portfolio-img { height: 280px; background: linear-gradient(135deg, #1a0033, #4d0080); display: flex; align-items: center; justify-content: center; font-size: 60px; }
+        .portfolio-info { padding: 30px; }
+        .portfolio-info h3 { font-size: 22px; color: #FFD700; margin-bottom: 10px; }
+        .portfolio-info p { color: #c0a0ff; font-size: 14px; }
+        
+        .process { padding: 120px 8%; }
+        .process h2 { font-family: 'Playfair Display', serif; font-size: 48px; color: #FFD700; margin-bottom: 60px; text-align: center; }
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        .process-step { background: rgba(157,78,221,0.08); padding: 35px 25px; border-radius: 5px; text-align: center; border: 1px solid rgba(199,125,255,0.15); }
+        .process-step-num { font-size: 36px; color: #FFD700; font-weight: 900; margin-bottom: 15px; }
+        .process-step h4 { color: #e6ccff; margin-bottom: 10px; font-size: 16px; }
+        .process-step p { color: #b380ff; font-size: 13px; }
+        
+        .cta { padding: 100px 8%; background: rgba(157,78,221,0.05); text-align: center; }
+        .cta h2 { font-family: 'Playfair Display', serif; font-size: 48px; color: #FFD700; margin-bottom: 20px; }
+        .cta p { font-size: 18px; color: #d9b3ff; margin-bottom: 40px; }
+        
+        footer { padding: 50px 8%; text-align: center; border-top: 1px solid rgba(199,125,255,0.1); }
+        footer h3 { font-family: 'Playfair Display', serif; color: #FFD700; margin-bottom: 10px; font-size: 24px; }
+        footer p { color: #9370db; font-size: 13px; }
+        
+        @media (max-width: 900px) {
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-content h1 { font-size: 48px; }
         }
-
-        .logo { color: var(--accent-color) !important; }
-        .btn { background: linear-gradient(135deg, var(--button-color), #c77dff) !important; }
-        .btn:hover { box-shadow: 0 10px 25px rgba(157, 78, 221, 0.4) !important; }
-        .hero-title span { color: var(--accent-color) !important; }
-        .hero-title { text-shadow: 0 0 20px rgba(157, 78, 221, 0.3) !important; }
-        .page-hero-content h1 { color: var(--accent-color) !important; }
-        .btn-outline { border-color: var(--accent-color) !important; color: var(--accent-color) !important; }
-        .btn-outline:hover { background: var(--accent-color) !important; color: #1a0033 !important; }
-        .counter { color: var(--accent-color) !important; }
-        .section-header h2 { color: var(--accent-color) !important; }
-        .service-card h3 { color: var(--light-text) !important; }
-        .tagline { color: var(--light-text) !important; }
-        .service-tag { background: rgba(157, 78, 221, 0.2) !important; color: var(--accent-color) !important; }
-        .nav-links a:hover { color: var(--accent-color) !important; }
-        .nav-links a::after { background: var(--accent-color) !important; }
-        .detail-item h3 { color: var(--accent-color) !important; }
-        .social-icon { background: rgba(157, 78, 221, 0.2) !important; color: var(--accent-color) !important; }
-        .social-icon:hover { background: var(--accent-color) !important; color: #1a0033 !important; }
-        .form-group input:focus, .form-group textarea:focus { border-color: var(--accent-color) !important; box-shadow: 0 0 20px rgba(157, 78, 221, 0.2) !important; }
-        .contact-info h2 { color: var(--accent-color) !important; }
-        .service-header-box h2 { color: var(--accent-color) !important; }
-        .package-price { color: var(--accent-color) !important; }
-        .featured { border-color: var(--accent-color) !important; }
-        .popular-badge { background: var(--accent-color) !important; color: #1a0033 !important; }
-        .template-explanation { background: rgba(157, 78, 221, 0.05) !important; border-left-color: var(--accent-color) !important; }
-        .template-explanation h4 { color: var(--accent-color) !important; }
-        .comparison-table th { background: rgba(157, 78, 221, 0.1) !important; color: var(--accent-color) !important; border-color: rgba(157, 78, 221, 0.2) !important; }
-        .footer h2 { color: var(--accent-color) !important; }
-        .footer-links a:hover { color: var(--accent-color) !important; }
-        .card::before, .service-card::before { background: linear-gradient(transparent, rgba(255, 255, 255, 0.08), transparent) !important; }
-        .card:hover, .service-card:hover { box-shadow: 0 15px 40px rgba(157, 78, 221, 0.2) !important; }
     </style>
 </head>
-
 <body>
-
-    <!-- VIDEO BACKGROUND WITH SMOOTH TRANSITIONS -->
-    <div class="video-container">
-        <video id="bgVideo" autoplay muted playsinline>
-            <source src="bg-video.mp4" type="video/mp4">
+    <div class="video-bg">
+        <video autoplay muted loop playsinline>
+            <source src="bg-video-creative.mp4" type="video/mp4">
         </video>
-        <div class="overlay"></div>
     </div>
+    <div class="overlay"></div>
 
-    <!-- PARTICLES -->
-    <div class="particles"></div>
-
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <div class="logo">FOVORSE</div>
+    <header>
+        <div class="brand">CREATIVEHUB</div>
         <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="packages.html">Packages</a></li>
-                <li><a href="why-us.html">Why Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#process">Our Process</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
         </nav>
-        <a href="contact.html" class="btn">Let's Connect</a>
+        <button class="cta-btn">Get Your Design</button>
     </header>
 
-    <!-- HERO SECTION (SECTION 1) -->
-    <section class="hero section1 reveal" id="home">
-        <div class="hero-left">
-            <span class="tagline">STRATEGY • DEVELOPMENT • AI AUTOMATION</span>
-            <h1 class="hero-title">
-                We Don't Just Run Campaigns.
-                <span>We Create Demand.</span>
-            </h1>
-            <p class="hero-text">
-                Fovorse helps businesses scale smarter through analytics,
-                premium web development, AI automation and growth strategy.
-            </p>
-            <div class="hero-buttons">
-                <a href="services.html" class="btn">Explore Services</a>
-                <a href="contact.html" class="btn-outline">Get Started</a>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- TRUST SECTION (SECTION 2) -->
-    <section class="trust section2 reveal">
-        <div class="section-header">
-            <h2>Trusted By Businesses That Want Growth</h2>
-            <p>From startups to scaling businesses, Fovorse helps companies make smarter digital decisions.</p>
-        </div>
-        <div class="stats-container">
-            <div class="service-card">
-                <h2 class="counter" data-target="120">0</h2>
-                <p>Projects Delivered</p>
-            </div>
-            <div class="service-card">
-                <h2 class="counter" data-target="95">0</h2>
-                <p>Client Retention</p>
-            </div>
-            <div class="service-card">
-                <h2 class="counter" data-target="350">0</h2>
-                <p>Average ROAS</p>
-            </div>
-            <div class="service-card">
-                <h2>24/7</h2>
-                <p>Support</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Award-Winning Design Studio</h1>
+            <p>We craft exceptional digital experiences that captivate, engage, and transform your brand into something remarkable.</p>
+            <div>
+                <button class="cta-btn" style="padding: 14px 30px; font-size: 14px;">View Our Work</button>
+                <button style="background: transparent; border: 2px solid #FFD700; color: #FFD700; padding: 12px 28px; border-radius: 5px; cursor: pointer; font-weight: 600; font-size: 14px;">Book a Call</button>
             </div>
         </div>
     </section>
 
-    <!-- ABOUT SECTION (SECTION 3) -->
-    <section class="results section3 reveal">
-        <div class="section-content-box">
-            <h2>Results Over Output. Strategy Over Guesswork.</h2>
-            <p>
-                Every decision starts with data. Every output is backed by strategy.
-                No vanity metrics. No random execution. Just measurable business growth.
-            </p>
-        </div>
-        <div class="results-grid">
-            <div class="card">
-                <h3>Data First</h3>
-                <p>Every campaign and business decision begins with research and analytics.</p>
-            </div>
-            <div class="card">
-                <h3>Growth Focused</h3>
-                <p>We focus on conversion, revenue and customer growth metrics.</p>
-            </div>
-            <div class="card">
-                <h3>AI Powered</h3>
-                <p>Intelligent automation helps businesses scale faster and smarter.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROCESS SECTION (SECTION 4) -->
-    <section class="process section4 reveal">
-        <div class="section-header">
-            <h2>How We Work</h2>
-            <p>Strategy-led execution built for measurable growth.</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>01 Research</h3>
-                <p>We analyze your market, competitors and target audience deeply.</p>
-            </div>
-            <div class="service-card">
-                <h3>02 Strategy</h3>
-                <p>A clear roadmap designed specifically for your business growth.</p>
-            </div>
-            <div class="service-card">
-                <h3>03 Execution</h3>
-                <p>Marketing, development and automation implementation with precision.</p>
-            </div>
-            <div class="service-card">
-                <h3>04 Growth</h3>
-                <p>Continuous optimization through analytics and actionable insights.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVICES SECTION (SECTION 5) -->
-    <section class="services section5 reveal" id="services">
-        <div class="section-header">
-            <h2>What We Do</h2>
-            <p>Strategy before execution. Every service built to deliver results.</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Strategy-Driven Digital Marketing</h3>
-                <p>SEO, Paid Ads, Social Media, Email Marketing and Analytics.</p>
-            </div>
-            <div class="service-card">
-                <h3>Conversion Focused Web Development</h3>
-                <p>High-performing websites optimized for speed and leads.</p>
-            </div>
-            <div class="service-card">
-                <h3>Full Stack Development</h3>
-                <p>Web apps, SaaS systems, APIs and scalable solutions.</p>
-            </div>
-            <div class="service-card">
-                <h3>Market Research</h3>
-                <p>Competitor benchmarking, industry analysis and customer insights.</p>
-            </div>
-            <div class="service-card">
-                <h3>AI Automation</h3>
-                <p>CRM automation, workflow systems and AI tools implementation.</p>
-            </div>
-            <div class="service-card">
-                <h3>Growth Strategy</h3>
-                <p>Revenue-focused scaling strategies tailored to your business.</p>
-            </div>
-        </div>
-        <div class="view-more-section">
-            <a href="services.html" class="btn">View All Services</a>
-        </div>
-    </section>
-
-    <!-- PORTFOLIO SECTION (SECTION 6) -->
-    <section class="portfolio section6 reveal" id="portfolio">
-        <div class="section-header">
-            <h2>Work That Speaks Louder Than Promises</h2>
-            <p>Every project started with a challenge and backed by strategy.</p>
-        </div>
+    <section class="portfolio" id="portfolio">
+        <h2>Featured Projects</h2>
         <div class="portfolio-grid">
-            <div class="portfolio-card">
-                <h3>E-Commerce Revenue Scale</h3>
-                <p>210% revenue growth in 5 months using SEO and paid campaigns.</p>
+            <div class="portfolio-item">
+                <div class="portfolio-img">🎨</div>
+                <div class="portfolio-info">
+                    <h3>Luxury Fashion Brand Identity</h3>
+                    <p>Complete visual identity system with website redesign</p>
+                </div>
             </div>
-            <div class="portfolio-card">
-                <h3>SaaS Landing Page Overhaul</h3>
-                <p>Conversion rate increased from 1.2% to 4.7% with strategic redesign.</p>
+            <div class="portfolio-item">
+                <div class="portfolio-img">🌟</div>
+                <div class="portfolio-info">
+                    <h3>E-Commerce Platform Redesign</h3>
+                    <p>Increased conversions by 145% through UX optimization</p>
+                </div>
             </div>
-            <div class="portfolio-card">
-                <h3>AI Workflow Automation</h3>
-                <p>Automated 60% of repetitive tasks and doubled monthly output.</p>
+            <div class="portfolio-item">
+                <div class="portfolio-img">✨</div>
+                <div class="portfolio-info">
+                    <h3>Mobile App Interface</h3>
+                    <p>Award-winning iOS/Android app design</p>
+                </div>
             </div>
-        </div>
-        <div class="view-more-section">
-            <a href="portfolio.html" class="btn">View Portfolio & Templates</a>
-        </div>
-    </section>
-
-    <!-- TESTIMONIALS SECTION -->
-    <section class="testimonials reveal">
-        <div class="section-header">
-            <h2>What Clients Say</h2>
-            <p>Trusted by businesses that want measurable growth.</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card testimonial-card">
-                <p>"Fovorse completely transformed our digital strategy and doubled our leads."</p>
-                <h4>— Startup Founder</h4>
-            </div>
-            <div class="service-card testimonial-card">
-                <p>"Finally an agency that focuses on actual results, not vanity metrics."</p>
-                <h4>— SaaS Company</h4>
-            </div>
-            <div class="service-card testimonial-card">
-                <p>"Our revenue doubled in under six months. Best decision we made."</p>
-                <h4>— E-commerce Brand</h4>
+            <div class="portfolio-item">
+                <div class="portfolio-img">💎</div>
+                <div class="portfolio-info">
+                    <h3>Brand Strategy Campaign</h3>
+                    <p>Full-scale branding for sustainable startup</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT CTA -->
-    <section class="contact-cta reveal">
-        <div class="section-header">
-            <h2>Ready to Scale Your Business?</h2>
-            <p>Let's discuss your growth strategy and how we can help you achieve your goals.</p>
+    <section class="process" id="process">
+        <h2>Our Creative Process</h2>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="process-step-num">01</div>
+                <h4>Discovery</h4>
+                <p>Deep dive into your brand, market & vision</p>
+            </div>
+            <div class="process-step">
+                <div class="process-step-num">02</div>
+                <h4>Ideation</h4>
+                <p>Brainstorm and concept development</p>
+            </div>
+            <div class="process-step">
+                <div class="process-step-num">03</div>
+                <h4>Design</h4>
+                <p>Create stunning visual concepts</p>
+            </div>
+            <div class="process-step">
+                <div class="process-step-num">04</div>
+                <h4>Deliver</h4>
+                <p>Polish and final deliverables</p>
+            </div>
         </div>
-        <a href="contact.html" class="btn btn-large">Start Your Journey</a>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <h2>FOVORSE</h2>
-        <p>Strategy-led growth partner helping businesses scale smarter.</p>
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="services.html">Services</a>
-            <a href="portfolio.html">Portfolio</a>
-            <a href="contact.html">Contact</a>
-        </div>
-        <p>© 2026 Fovorse. All Rights Reserved.</p>
+    <section class="cta" id="contact">
+        <h2>Let's Create Something Extraordinary</h2>
+        <p>Your next great design project starts here</p>
+        <button class="cta-btn" style="padding: 16px 40px; font-size: 15px;">Schedule Consultation</button>
+    </section>
+
+    <footer>
+        <h3>CREATIVEHUB</h3>
+        <p>Transforming brands through exceptional design • 2026</p>
     </footer>
 
     <script src="script.js"></script>
-
 </body>
-
 </html>
