@@ -343,6 +343,7 @@ section{
 .benefits-grid,
 .templates-grid,
 .stats-grid,
+.results-grid,
 .team-grid,
 .testimonial-cards,
 .faq-grid,
@@ -356,7 +357,8 @@ section{
 .portfolio-grid,
 .benefits-grid,
 .team-grid,
-.faq-grid{
+.faq-grid,
+.results-grid{
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
