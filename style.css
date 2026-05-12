@@ -991,3 +991,288 @@ section{
         gap:15px;
     }
 }
+
+/* ==================================
+   GLOBAL RESPONSIVE DESIGN
+   MOBILE + TABLET + LAPTOP
+================================== */
+
+/* LARGE TABLETS */
+
+@media(max-width:1200px){
+
+    .hero,
+    .hero-section,
+    .about-section,
+    .services-section{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        gap:50px;
+    }
+
+    .hero-left,
+    .hero-right{
+        width:100%;
+    }
+
+    .hero-title,
+    .hero h1{
+        font-size:58px;
+    }
+
+    .hero-text,
+    .hero p{
+        max-width:700px;
+        margin:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .services-grid,
+    .portfolio-grid,
+    .cert-grid,
+    .trust-stats{
+
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .compliance-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+/* TABLET VIEW */
+
+@media(max-width:992px){
+
+    header,
+    .navbar{
+
+        padding:18px 5%;
+
+        flex-wrap:wrap;
+
+        justify-content:space-between;
+    }
+
+    nav,
+    .nav-links{
+
+        flex-wrap:wrap;
+        justify-content:center;
+
+        gap:18px;
+    }
+
+    .hero,
+    .hero-section{
+
+        min-height:auto;
+
+        padding:
+        160px 6% 80px;
+    }
+
+    .hero-title,
+    .hero h1{
+
+        font-size:50px;
+        line-height:1.2;
+    }
+
+    .section-header h2,
+    section h2{
+
+        font-size:42px;
+    }
+
+    .services-grid,
+    .portfolio-grid,
+    .stats-container,
+    .trust-stats{
+
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .card,
+    .service-card,
+    .portfolio-card,
+    .package-card,
+    .cert-box,
+    .compliance-item{
+
+        padding:28px;
+    }
+}
+
+/* MOBILE VIEW */
+
+@media(max-width:768px){
+
+    html,
+    body{
+        overflow-x:hidden;
+    }
+
+    header,
+    .navbar{
+
+        flex-direction:column;
+
+        gap:18px;
+
+        padding:18px 5%;
+    }
+
+    .logo,
+    .brand{
+        font-size:28px;
+    }
+
+    nav,
+    .nav-links{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:15px;
+    }
+
+    nav a,
+    .nav-links a{
+        font-size:13px;
+    }
+
+    .hero,
+    .hero-section{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        padding:
+        180px 6% 80px;
+
+        gap:45px;
+    }
+
+    .hero-left,
+    .hero-right{
+        width:100%;
+    }
+
+    .hero-title,
+    .hero h1{
+
+        font-size:40px;
+
+        line-height:1.2;
+    }
+
+    .hero-text,
+    .hero p{
+
+        font-size:16px;
+
+        line-height:1.8;
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+
+        width:100%;
+    }
+
+    .btn,
+    .btn-outline,
+    .cta-btn,
+    button{
+
+        width:100%;
+    }
+
+    section{
+        padding:90px 6%;
+    }
+
+    .section-header h2,
+    section h2{
+
+        font-size:34px;
+    }
+
+    .services-grid,
+    .portfolio-grid,
+    .package-grid,
+    .cert-grid,
+    .compliance-grid,
+    .trust-stats,
+    .stats-container{
+
+        grid-template-columns:1fr;
+
+        gap:25px;
+    }
+
+    .premium-image,
+    .section-image img{
+
+        width:100%;
+        max-width:100%;
+    }
+
+    .card,
+    .service-card,
+    .portfolio-card,
+    .package-card,
+    .cert-box,
+    .compliance-item{
+
+        padding:25px;
+    }
+
+    footer{
+        text-align:center;
+    }
+}
+
+/* SMALL MOBILE */
+
+@media(max-width:480px){
+
+    .hero-title,
+    .hero h1{
+
+        font-size:34px;
+    }
+
+    .section-header h2,
+    section h2{
+
+        font-size:28px;
+    }
+
+    nav,
+    .nav-links{
+        gap:10px;
+    }
+
+    nav a,
+    .nav-links a{
+        font-size:12px;
+    }
+
+    .hero-text,
+    .hero p{
+        font-size:15px;
+    }
+}
