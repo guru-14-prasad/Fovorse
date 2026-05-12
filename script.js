@@ -352,3 +352,95 @@ if("IntersectionObserver" in window){
         imageObserver.observe(img);
     });
 }
+
+// =======================
+// PREMIUM PLAYFUL EFFECTS
+// =======================
+
+// SCROLL BAR
+
+window.addEventListener(
+"scroll",
+()=>{
+
+    const scrollTop =
+    window.scrollY;
+
+    const docHeight =
+    document.documentElement.scrollHeight
+    - window.innerHeight;
+
+    const scrollPercent =
+    (scrollTop / docHeight)
+    * 100;
+
+    document.querySelector(
+    ".progress-bar"
+    ).style.width =
+    scrollPercent + "%";
+});
+
+// PARALLAX HERO
+
+document.addEventListener(
+"mousemove",
+(e)=>{
+
+    const hero =
+    document.querySelector(
+    ".hero-left"
+    );
+
+    if(hero){
+
+        const x =
+        (window.innerWidth/2
+        - e.pageX)/50;
+
+        const y =
+        (window.innerHeight/2
+        - e.pageY)/50;
+
+        hero.style.transform =
+        `translate(${x}px,
+        ${y}px)`;
+    }
+});
+
+// STAGGER ANIMATION
+
+const observer =
+new IntersectionObserver(
+(entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity =
+"1";
+
+entry.target.style.transform =
+"translateY(0)";
+}
+});
+},
+{
+threshold:.15
+});
+
+document.querySelectorAll(
+".cert-box,.compliance-item,.stat"
+)
+.forEach((el,index)=>{
+
+el.style.opacity = "0";
+
+el.style.transform =
+"translateY(50px)";
+
+el.style.transition =
+`${0.7 + index * .15}s`;
+
+observer.observe(el);
+});
