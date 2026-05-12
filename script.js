@@ -216,67 +216,75 @@ window.addEventListener("load", () => {
 const bgVideos = [
     document.getElementById("bgVideo1"),
     document.getElementById("bgVideo2"),
-    document.getElementById("bgVideo3")
-];
+    document.getElementById("bgVideo3"),
+    document.getElementById("bgVideo4"),
+    document.getElementById("bgVideo5")
+].filter(Boolean); // filter nulls for pages that only have 3 videos
 
 let currentVideoIndex = 0;
 
+function switchToVideo(newIndex) {
+    if (newIndex === currentVideoIndex || !bgVideos[newIndex]) return;
+
+    bgVideos[currentVideoIndex].classList.remove("active");
+    bgVideos[currentVideoIndex].pause();
+
+    currentVideoIndex = newIndex;
+
+    bgVideos[currentVideoIndex].classList.add("active");
+    if (bgVideos[currentVideoIndex].paused) {
+        bgVideos[currentVideoIndex].play().catch(e => console.log("Video play failed:", e));
+    }
+}
+
+// On portfolio page: sync each template card hover/scroll to its matching video
+const templateCards = document.querySelectorAll(".template-card");
+if (templateCards.length > 0 && bgVideos.length >= 5) {
+    // Hover: instantly preview that template's video
+    templateCards.forEach((card, i) => {
+        card.addEventListener("mouseenter", () => switchToVideo(i));
+    });
+
+    // Scroll: switch video when a template card enters the centre of viewport
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const idx = Array.from(templateCards).indexOf(entry.target);
+                if (idx !== -1) switchToVideo(idx);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    templateCards.forEach(card => cardObserver.observe(card));
+} else {
+    // Fallback for pages with fewer videos: section-based switching
+    window.addEventListener("scroll", () => {
+        const sections = document.querySelectorAll("section");
+        let currentSectionIndex = 0;
+
+        sections.forEach((section, index) => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= window.innerHeight / 2 && rect.top + rect.height >= window.innerHeight / 2) {
+                currentSectionIndex = index;
+            }
+        });
+
+        const totalVideos = bgVideos.length;
+        const totalSections = sections.length;
+        const newVideoIndex = Math.min(
+            Math.floor((currentSectionIndex / totalSections) * totalVideos),
+            totalVideos - 1
+        );
+
+        switchToVideo(newVideoIndex);
+    });
+}
+
+// Subtle playback rate effect on scroll
 window.addEventListener("scroll", () => {
-    const sections = document.querySelectorAll("section");
-    let currentSectionIndex = 0;
-
-    // Find which section is currently most visible
-    sections.forEach((section, index) => {
-        const rect = section.getBoundingClientRect();
-        const sectionTop = rect.top;
-        const sectionHeight = rect.height;
-        const windowHeight = window.innerHeight;
-
-        // Check if section is in viewport (with some tolerance)
-        if (sectionTop <= windowHeight / 2 && sectionTop + sectionHeight >= windowHeight / 2) {
-            currentSectionIndex = index;
-        }
-    });
-
-    // Map sections to videos (distribute across available videos)
-    let newVideoIndex;
-    const totalSections = sections.length;
-
-    if (currentSectionIndex < totalSections / 3) {
-        newVideoIndex = 0; // First third of sections: bg-video.mp4
-    } else if (currentSectionIndex < (totalSections / 3) * 2) {
-        newVideoIndex = 1; // Second third of sections: bg-video-2.mp4
-    } else {
-        newVideoIndex = 2; // Last third of sections: bg-video-3.mp4
-    }
-
-    // Switch video if needed
-    if (newVideoIndex !== currentVideoIndex) {
-        // Pause current video to save resources
-        bgVideos[currentVideoIndex].pause();
-
-        // Remove active class from current video
-        bgVideos[currentVideoIndex].classList.remove("active");
-
-        // Add active class to new video
-        bgVideos[newVideoIndex].classList.add("active");
-
-        // Ensure new video is playing
-        if (bgVideos[newVideoIndex].paused) {
-            bgVideos[newVideoIndex].play().catch(e => console.log("Video play failed:", e));
-        }
-
-        // Update current index
-        currentVideoIndex = newVideoIndex;
-    }
-
-    // Optional: Adjust playback rate for subtle effect
-    const playbackRate = 0.8 + (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 0.4; // Rate between 0.8 and 1.2
-    bgVideos.forEach(video => {
-        if (video) {
-            video.playbackRate = Math.min(playbackRate, 1.2);
-        }
-    });
+    const scrollRatio = window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight || 1);
+    const rate = Math.min(0.8 + scrollRatio * 0.4, 1.2);
+    bgVideos.forEach(v => { if (v) v.playbackRate = rate; });
 });
 
 // =======================
