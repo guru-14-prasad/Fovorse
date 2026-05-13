@@ -1,178 +1,922 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechVision - API Platform for Startups</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #001F3F, #003d80); color: white; }
-        
-        .video-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; }
-        .video-bg video { width: 100%; height: 100%; object-fit: cover; opacity: 0.3; }
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: linear-gradient(135deg, rgba(0,31,63,0.9), rgba(0,61,128,0.9)); z-index: -1; }
-        
-        header { display: flex; justify-content: space-between; align-items: center; padding: 25px 8%; position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(0,31,63,0.8); backdrop-filter: blur(10px); }
-        .brand { font-size: 26px; font-weight: 800; color: #00BFFF; letter-spacing: 1px; }
-        nav { display: flex; gap: 40px; }
-        nav a { color: white; text-decoration: none; transition: .3s; font-size: 14px; }
-        nav a:hover { color: #00BFFF; }
-        .cta-btn { background: linear-gradient(135deg, #0099FF, #00BFFF); color: white; padding: 12px 24px; border-radius: 30px; border: none; cursor: pointer; font-weight: 600; }
-        
-        .hero { min-height: 100vh; display: flex; align-items: center; padding: 160px 8% 80px; gap: 60px; }
-        .hero-content h1 { font-size: 62px; line-height: 1.2; margin-bottom: 25px; color: #00BFFF; text-shadow: 0 0 30px rgba(0,191,255,0.2); }
-        .hero-content p { font-size: 18px; color: #afc9ff; line-height: 1.8; margin-bottom: 35px; max-width: 600px; }
-        .hero-right { flex: 1; }
-        .features-box { background: rgba(0,191,255,0.08); border: 1px solid rgba(0,191,255,0.2); padding: 35px; border-radius: 20px; }
-        .feature-row { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(0,191,255,0.1); }
-        .feature-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .feature-row h4 { color: #00BFFF; font-size: 15px; margin-bottom: 5px; }
-        .feature-row p { font-size: 13px; color: #7fa3cc; }
-        
-        .pricing { padding: 120px 8%; background: rgba(0,191,255,0.02); }
-        .section-title { text-align: center; font-size: 48px; color: #00BFFF; margin-bottom: 70px; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .price-card { background: rgba(0,191,255,0.08); border: 1px solid rgba(0,191,255,0.15); padding: 45px 30px; border-radius: 15px; text-align: center; transition: .4s; }
-        .price-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,191,255,0.2); border-color: #00BFFF; }
-        .price-card h3 { font-size: 20px; margin-bottom: 15px; }
-        .price-card .amount { font-size: 45px; color: #00BFFF; margin: 20px 0; font-weight: 700; }
-        .price-card ul { list-style: none; margin: 30px 0; text-align: left; }
-        .price-card li { padding: 10px 0; font-size: 14px; color: #afc9ff; border-bottom: 1px solid rgba(0,191,255,0.1); }
-        
-        .integrations { padding: 120px 8%; }
-        .int-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 50px; }
-        .int-item { background: rgba(0,191,255,0.1); padding: 25px; border-radius: 10px; text-align: center; font-size: 14px; border: 1px solid rgba(0,191,255,0.15); transition: .3s; }
-        .int-item:hover { background: rgba(0,191,255,0.15); }
-        
-        .cta { padding: 100px 8%; text-align: center; }
-        .cta h2 { font-size: 42px; color: #00BFFF; margin-bottom: 20px; }
-        .cta p { font-size: 18px; color: #afc9ff; margin-bottom: 40px; }
-        
-        footer { padding: 50px 8%; text-align: center; border-top: 1px solid rgba(0,191,255,0.1); }
-        footer h3 { color: #00BFFF; margin-bottom: 10px; }
-        footer p { color: #7fa3cc; font-size: 13px; }
-        
-        @media (max-width: 900px) {
-            .hero { flex-direction: column; padding: 140px 5% 80px; }
-            .pricing-grid { grid-template-columns: 1fr; }
-            .int-grid { grid-template-columns: repeat(2, 1fr); }
-            .hero-content h1 { font-size: 45px; }
-        }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fovorse | The Super Growth Squad! 🚀</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+/* ── Reset ─────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+/* ── Variables ─────────────────────────────────────────── */
+:root{
+  --sun:    #FFD600;
+  --sky:    #29B6F6;
+  --green:  #66BB6A;
+  --pink:   #FF5C93;
+  --orange: #FF7043;
+  --purple: #AB47BC;
+  --white:  #FFFFFF;
+  --cream:  #FFFDE7;
+  --dark:   #1A237E;
+  --card1:  #E3F2FD;
+  --card2:  #F3E5F5;
+  --card3:  #E8F5E9;
+  --card4:  #FFF3E0;
+  --card5:  #FCE4EC;
+  --card6:  #E0F7FA;
+  --ff:    'Fredoka One', cursive;
+  --fn:    'Nunito', sans-serif;
+}
+
+body{
+  font-family:var(--fn);
+  background:var(--cream);
+  color:#333;
+  overflow-x:hidden;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ctext y='24' font-size='24'%3E⭐%3C/text%3E%3C/svg%3E") 16 16, auto;
+}
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-track{background:#FFF9C4;}
+::-webkit-scrollbar-thumb{background:var(--pink);border-radius:8px;}
+
+/* ── Keyframes ─────────────────────────────────────────── */
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes wiggle{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}40%{transform:translateY(-18px)}60%{transform:translateY(-9px)}}
+@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes rainbow{
+  0%{color:#FF5C93}14%{color:#FF7043}28%{color:#FFD600}42%{color:#66BB6A}
+  57%{color:#29B6F6}71%{color:#AB47BC}85%{color:#FF5C93}100%{color:#FF7043}
+}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes starPop{0%{transform:scale(0) rotate(-20deg);opacity:0}70%{transform:scale(1.3) rotate(5deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
+@keyframes slideUp{from{transform:translateY(50px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes bubblepulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes cloudmove{0%{transform:translateX(-120px)}100%{transform:translateX(calc(100vw + 120px))}}
+@keyframes raindrop{from{transform:translateY(-20px);opacity:0}to{transform:translateY(60px);opacity:0}}
+
+/* ── Floating Shapes BG ─────────────────────────────────── */
+.bg-shapes{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.bg-shape{position:absolute;border-radius:50%;opacity:.13;}
+.s1{width:320px;height:320px;background:var(--sky);top:-80px;left:-80px;animation:float 7s ease-in-out infinite;}
+.s2{width:200px;height:200px;background:var(--pink);bottom:10%;right:-60px;animation:float 5s ease-in-out infinite .8s;}
+.s3{width:150px;height:150px;background:var(--sun);top:40%;left:-40px;animation:float 6s ease-in-out infinite 1.5s;}
+.s4{width:100px;height:100px;background:var(--green);bottom:30%;left:20%;animation:float 8s ease-in-out infinite .3s;}
+.s5{width:250px;height:250px;background:var(--purple);top:60%;right:5%;animation:float 9s ease-in-out infinite 2s;}
+
+/* ── Cloud ─────────────────────────────────────────────── */
+.cloud{position:fixed;top:8%;z-index:0;opacity:.55;animation:cloudmove 28s linear infinite;}
+.cloud svg{width:120px;}
+
+/* ── Emoji rain ────────────────────────────────────────── */
+.emoji-rain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+.drop{position:absolute;font-size:22px;animation:raindrop 2.5s linear infinite;opacity:0;}
+
+/* ── NAVBAR ─────────────────────────────────────────────── */
+.navbar{
+  position:fixed;top:0;width:100%;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 6%;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:3px dashed var(--sun);
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+}
+.logo-nav{
+  font-family:var(--ff);font-size:28px;
+  background:linear-gradient(135deg,var(--pink),var(--orange));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:1px;
+}
+.logo-nav::before{content:'⚡ ';}
+nav ul{display:flex;gap:28px;list-style:none;}
+nav ul li a{
+  font-family:var(--ff);font-size:15px;
+  color:#444;text-decoration:none;
+  padding:6px 14px;border-radius:20px;
+  transition:all .25s;
+}
+nav ul li a:hover{
+  background:var(--sun);color:#333;
+  transform:scale(1.1) rotate(-2deg);
+  display:inline-block;
+}
+.btn-nav{
+  font-family:var(--ff);font-size:15px;
+  background:linear-gradient(135deg,var(--pink),var(--orange));
+  color:#fff;border:none;padding:10px 22px;
+  border-radius:30px;cursor:pointer;
+  box-shadow:0 4px 14px rgba(255,92,147,.35);
+  transition:all .25s;
+  text-decoration:none;
+}
+.btn-nav:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 8px 22px rgba(255,92,147,.45);}
+
+/* ── General button ─────────────────────────────────────── */
+.btn{
+  display:inline-block;
+  font-family:var(--ff);font-size:16px;
+  background:linear-gradient(135deg,var(--pink),var(--orange));
+  color:#fff;padding:13px 30px;
+  border-radius:30px;text-decoration:none;
+  border:none;cursor:pointer;
+  box-shadow:0 6px 20px rgba(255,92,147,.35);
+  transition:all .3s;
+}
+.btn:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 28px rgba(255,92,147,.45);}
+.btn-outline{
+  display:inline-block;
+  font-family:var(--ff);font-size:16px;
+  background:transparent;
+  color:var(--dark);padding:11px 28px;
+  border-radius:30px;text-decoration:none;
+  border:3px solid var(--dark);
+  transition:all .3s;
+}
+.btn-outline:hover{background:var(--dark);color:#fff;transform:translateY(-3px);}
+.btn-lg{padding:16px 40px;font-size:18px;}
+
+/* ── Section wrapper ────────────────────────────────────── */
+.section-wrap{position:relative;z-index:10;}
+.section-header{text-align:center;margin-bottom:52px;}
+.section-header h2{
+  font-family:var(--ff);font-size:clamp(32px,5vw,52px);
+  color:var(--dark);line-height:1.15;margin-bottom:14px;
+}
+.section-header p{font-size:17px;color:#555;max-width:580px;margin:0 auto;line-height:1.7;}
+
+/* ── HERO ───────────────────────────────────────────────── */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:120px 7% 80px;
+  background:linear-gradient(160deg,#FFF9C4 0%,#E3F2FD 50%,#FCE4EC 100%);
+  position:relative;overflow:hidden;z-index:10;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 20% 50%,rgba(255,214,0,.18) 0%,transparent 50%),
+    radial-gradient(circle at 80% 20%,rgba(41,182,246,.15) 0%,transparent 50%);
+  pointer-events:none;
+}
+
+/* Wavy bottom */
+.hero::after{
+  content:'';position:absolute;bottom:-2px;left:0;right:0;height:80px;
+  background:var(--cream);
+  clip-path:ellipse(55% 100% at 50% 100%);
+}
+
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%;}
+
+.hero-tag{
+  display:inline-block;
+  font-family:var(--ff);font-size:13px;letter-spacing:2px;
+  color:var(--orange);background:rgba(255,112,67,.1);
+  padding:6px 16px;border-radius:20px;border:2px solid var(--orange);
+  margin-bottom:20px;animation:bubblepulse 2s ease-in-out infinite;
+}
+.hero-title{
+  font-family:var(--ff);
+  font-size:clamp(36px,4.5vw,60px);
+  color:var(--dark);line-height:1.15;
+  margin-bottom:20px;
+}
+.hero-title span{
+  display:block;
+  background:linear-gradient(135deg,var(--pink),var(--orange),var(--sun));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  animation:rainbow 5s linear infinite;
+}
+.hero-text{font-size:17px;color:#555;line-height:1.8;margin-bottom:32px;max-width:520px;}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+
+/* Hero right — cartoon mascot card */
+.mascot-card{
+  background:#fff;border-radius:30px;padding:36px 28px;
+  box-shadow:0 20px 60px rgba(0,0,0,.1);
+  border:4px solid var(--sun);
+  text-align:center;
+  animation:float 5s ease-in-out infinite;
+  position:relative;
+}
+.mascot-card::before{
+  content:'🌟';position:absolute;top:-18px;left:50%;transform:translateX(-50%);
+  font-size:36px;animation:starPop .6s ease both;
+}
+.mascot-emoji{font-size:88px;animation:bounce 2.5s ease-in-out infinite;display:block;margin-bottom:16px;}
+.mascot-name{font-family:var(--ff);font-size:22px;color:var(--pink);margin-bottom:6px;}
+.mascot-role{font-size:13px;color:#777;margin-bottom:20px;}
+.mascot-powers{display:flex;flex-direction:column;gap:10px;text-align:left;}
+.power-row{
+  display:flex;align-items:center;gap:10px;
+  background:var(--card1);border-radius:12px;
+  padding:10px 14px;font-size:13px;font-weight:700;color:var(--dark);
+  transition:transform .2s;
+}
+.power-row:hover{transform:scale(1.03);}
+.power-row:nth-child(2){background:var(--card2);}
+.power-row:nth-child(3){background:var(--card3);}
+.power-row:nth-child(4){background:var(--card4);}
+.power-icon{font-size:20px;}
+
+/* ── MARQUEE ────────────────────────────────────────────── */
+.marquee-section{
+  background:linear-gradient(135deg,var(--pink),var(--orange));
+  padding:14px 0;overflow:hidden;position:relative;z-index:10;
+}
+.marquee-track{
+  display:flex;white-space:nowrap;
+  animation:marquee 18s linear infinite;
+}
+.marquee-item{
+  font-family:var(--ff);font-size:16px;color:#fff;
+  padding:0 28px;letter-spacing:1px;
+  display:flex;align-items:center;gap:10px;
+}
+
+/* ── STATS ──────────────────────────────────────────────── */
+.stats-section{
+  padding:90px 7%;
+  background:var(--cream);
+  position:relative;z-index:10;
+}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.stat-card{
+  background:#fff;border-radius:24px;padding:32px 20px;
+  text-align:center;border:3px solid transparent;
+  box-shadow:0 8px 30px rgba(0,0,0,.07);
+  transition:all .3s;position:relative;overflow:hidden;
+}
+.stat-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:6px;
+  background:linear-gradient(135deg,var(--pink),var(--orange));
+}
+.stat-card:nth-child(2)::before{background:linear-gradient(135deg,var(--sky),var(--purple));}
+.stat-card:nth-child(3)::before{background:linear-gradient(135deg,var(--green),var(--sky));}
+.stat-card:nth-child(4)::before{background:linear-gradient(135deg,var(--sun),var(--orange));}
+.stat-card:hover{transform:translateY(-8px) rotate(1deg);border-color:var(--sun);box-shadow:0 20px 40px rgba(0,0,0,.12);}
+.stat-emoji{font-size:44px;margin-bottom:12px;display:block;animation:wiggle 3s ease-in-out infinite;}
+.stat-num{
+  font-family:var(--ff);font-size:46px;
+  background:linear-gradient(135deg,var(--pink),var(--orange));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  line-height:1;
+}
+.stat-label{font-size:15px;color:#555;font-weight:700;margin-top:6px;}
+
+/* ── ABOUT / PHILOSOPHY ────────────────────────────────── */
+.about-section{
+  padding:90px 7%;
+  background:linear-gradient(135deg,#E3F2FD 0%,#F3E5F5 100%);
+  position:relative;z-index:10;
+  clip-path:polygon(0 4%,100% 0,100% 96%,0 100%);
+  margin:-2px 0;
+}
+.about-inner{max-width:700px;margin:0 auto;text-align:center;}
+.about-inner h2{font-family:var(--ff);font-size:clamp(28px,4vw,44px);color:var(--dark);margin-bottom:18px;}
+.about-inner p{font-size:17px;color:#555;line-height:1.8;margin-bottom:48px;}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:left;}
+.pillar{
+  background:#fff;border-radius:20px;padding:26px 22px;
+  border:3px solid transparent;
+  box-shadow:0 6px 24px rgba(0,0,0,.07);
+  transition:all .3s;
+}
+.pillar:hover{transform:translateY(-6px);border-color:var(--pink);}
+.pillar-icon{font-size:36px;margin-bottom:12px;display:block;}
+.pillar h3{font-family:var(--ff);font-size:20px;color:var(--dark);margin-bottom:8px;}
+.pillar p{font-size:13px;color:#666;line-height:1.6;}
+
+/* ── PROCESS ────────────────────────────────────────────── */
+.process-section{
+  padding:90px 7%;
+  background:var(--cream);
+  position:relative;z-index:10;
+}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.process-card{
+  background:#fff;border-radius:24px;padding:30px 22px;
+  text-align:center;
+  box-shadow:0 8px 28px rgba(0,0,0,.07);
+  border:3px dashed transparent;
+  transition:all .3s;
+  position:relative;
+}
+.process-card:hover{border-color:var(--sky);transform:translateY(-8px);}
+.process-card::after{
+  content:'→';
+  position:absolute;right:-22px;top:50%;transform:translateY(-50%);
+  font-size:28px;color:var(--pink);font-weight:900;
+}
+.process-card:last-child::after{display:none;}
+.process-num{
+  font-family:var(--ff);font-size:52px;
+  background:linear-gradient(135deg,var(--sky),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  line-height:1;margin-bottom:8px;
+}
+.process-icon{font-size:38px;margin-bottom:14px;display:block;animation:float 4s ease-in-out infinite;}
+.process-card:nth-child(2) .process-icon{animation-delay:.5s;}
+.process-card:nth-child(3) .process-icon{animation-delay:1s;}
+.process-card:nth-child(4) .process-icon{animation-delay:1.5s;}
+.process-card h3{font-family:var(--ff);font-size:19px;color:var(--dark);margin-bottom:8px;}
+.process-card p{font-size:13px;color:#666;line-height:1.6;}
+
+/* ── SERVICES ───────────────────────────────────────────── */
+.services-section{
+  padding:90px 7%;
+  background:linear-gradient(160deg,#FCE4EC 0%,#E8F5E9 100%);
+  position:relative;z-index:10;
+}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.service-card{
+  border-radius:24px;padding:32px 26px;
+  box-shadow:0 8px 28px rgba(0,0,0,.07);
+  border:3px solid transparent;
+  transition:all .35s;
+  cursor:pointer;
+  position:relative;overflow:hidden;
+}
+.service-card:nth-child(1){background:var(--card1);}
+.service-card:nth-child(2){background:var(--card2);}
+.service-card:nth-child(3){background:var(--card3);}
+.service-card:nth-child(4){background:var(--card4);}
+.service-card:nth-child(5){background:var(--card5);}
+.service-card:nth-child(6){background:var(--card6);}
+.service-card:hover{transform:translateY(-10px) rotate(-1deg);box-shadow:0 22px 44px rgba(0,0,0,.14);}
+.service-card:hover::after{
+  content:'✨';position:absolute;top:10px;right:14px;
+  font-size:24px;animation:starPop .3s ease;
+}
+.service-icon{font-size:42px;margin-bottom:14px;display:block;animation:float 6s ease-in-out infinite;}
+.service-card:nth-child(even) .service-icon{animation-delay:.8s;}
+.service-card h3{font-family:var(--ff);font-size:20px;color:var(--dark);margin-bottom:10px;}
+.service-card p{font-size:13px;color:#555;line-height:1.65;}
+.view-more{text-align:center;margin-top:40px;}
+
+/* ── PORTFOLIO ──────────────────────────────────────────── */
+.portfolio-section{
+  padding:90px 7%;
+  background:var(--cream);
+  position:relative;z-index:10;
+}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+.portfolio-card{
+  background:#fff;border-radius:24px;overflow:hidden;
+  box-shadow:0 10px 32px rgba(0,0,0,.09);
+  border:3px solid transparent;
+  transition:all .35s;
+}
+.portfolio-card:hover{transform:translateY(-10px);border-color:var(--pink);box-shadow:0 24px 48px rgba(255,92,147,.2);}
+.port-banner{
+  height:140px;display:flex;align-items:center;justify-content:center;
+  font-size:72px;
+  position:relative;overflow:hidden;
+}
+.port-banner::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(255,255,255,.3));
+}
+.pb-1{background:linear-gradient(135deg,#FFD600,#FF7043);}
+.pb-2{background:linear-gradient(135deg,#29B6F6,#AB47BC);}
+.pb-3{background:linear-gradient(135deg,#66BB6A,#29B6F6);}
+.port-body{padding:22px 24px;}
+.port-body h3{font-family:var(--ff);font-size:19px;color:var(--dark);margin-bottom:8px;}
+.port-body p{font-size:13px;color:#666;line-height:1.6;}
+.port-tag{
+  display:inline-block;margin-top:12px;
+  font-family:var(--ff);font-size:11px;letter-spacing:1px;
+  color:#fff;background:var(--pink);
+  padding:4px 12px;border-radius:20px;
+}
+
+/* ── TESTIMONIALS ───────────────────────────────────────── */
+.testimonials-section{
+  padding:90px 7%;
+  background:linear-gradient(135deg,#E0F7FA 0%,#F3E5F5 100%);
+  position:relative;z-index:10;
+  clip-path:polygon(0 3%,100% 0,100% 97%,0 100%);
+  margin:-2px 0;
+}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.testi-card{
+  background:#fff;border-radius:24px;padding:32px 26px;
+  box-shadow:0 8px 30px rgba(0,0,0,.07);
+  border:3px solid transparent;
+  transition:all .3s;
+  position:relative;
+}
+.testi-card::before{
+  content:'"';
+  position:absolute;top:-10px;left:20px;
+  font-family:var(--ff);font-size:72px;
+  color:var(--sun);line-height:1;
+  opacity:.6;
+}
+.testi-card:hover{border-color:var(--sun);transform:rotate(-1deg);}
+.testi-stars{font-size:20px;margin-bottom:14px;}
+.testi-text{font-size:14px;color:#444;line-height:1.7;font-weight:600;margin-bottom:18px;}
+.testi-author{font-family:var(--ff);font-size:15px;color:var(--pink);}
+.testi-emoji{font-size:28px;}
+
+/* ── CTA ────────────────────────────────────────────────── */
+.cta-section{
+  padding:100px 7%;
+  background:linear-gradient(135deg,var(--pink),var(--orange),var(--sun));
+  text-align:center;
+  position:relative;z-index:10;
+  overflow:hidden;
+}
+.cta-section::before{
+  content:'🎉 🚀 ⭐ 🎨 🦸 🎯 🔥 💡';
+  position:absolute;top:0;left:0;right:0;
+  font-size:28px;padding:10px;letter-spacing:12px;opacity:.25;
+  animation:marquee 12s linear infinite;
+  white-space:nowrap;
+}
+.cta-section h2{
+  font-family:var(--ff);font-size:clamp(32px,5vw,56px);
+  color:#fff;text-shadow:0 4px 20px rgba(0,0,0,.2);margin-bottom:16px;
+}
+.cta-section p{font-size:18px;color:rgba(255,255,255,.9);margin-bottom:38px;font-weight:700;}
+.btn-white{
+  display:inline-block;
+  font-family:var(--ff);font-size:17px;
+  background:#fff;color:var(--pink);
+  padding:15px 40px;border-radius:30px;
+  text-decoration:none;border:none;cursor:pointer;
+  box-shadow:0 8px 30px rgba(0,0,0,.2);
+  transition:all .3s;
+}
+.btn-white:hover{transform:translateY(-5px) scale(1.05);box-shadow:0 16px 40px rgba(0,0,0,.25);}
+
+/* ── FOOTER ─────────────────────────────────────────────── */
+footer{
+  background:var(--dark);color:#fff;
+  padding:60px 7% 36px;
+  position:relative;z-index:10;
+}
+.footer-top{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:40px;margin-bottom:40px;
+}
+.footer-brand .logo-nav{font-size:32px;margin-bottom:10px;display:block;}
+.footer-brand p{font-size:13px;color:#aaa;line-height:1.7;margin-bottom:20px;}
+.footer-links-col h4{font-family:var(--ff);font-size:18px;color:var(--sun);margin-bottom:14px;}
+.footer-links-col a{
+  display:block;color:#bbb;text-decoration:none;
+  font-size:13px;padding:4px 0;transition:color .2s;
+}
+.footer-links-col a:hover{color:var(--pink);}
+.footer-social{display:flex;gap:12px;margin-top:14px;}
+.social-btn{
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;text-decoration:none;
+  transition:all .25s;
+}
+.social-btn:hover{background:var(--pink);border-color:var(--pink);transform:rotate(10deg) scale(1.1);}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1);
+  padding-top:24px;text-align:center;
+  font-size:13px;color:#666;
+}
+.footer-bottom span{color:var(--pink);}
+
+/* ── Scroll reveal ──────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr;}
+  .mascot-card{max-width:400px;margin:0 auto;}
+  .stats-grid,.process-grid{grid-template-columns:1fr 1fr;}
+  .services-grid,.testi-grid,.portfolio-grid{grid-template-columns:1fr 1fr;}
+  .pillars-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  nav ul{display:none;}
+  .process-card::after{display:none;}
+}
+@media(max-width:580px){
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .services-grid,.testi-grid,.portfolio-grid{grid-template-columns:1fr;}
+  .hero-btns{flex-direction:column;align-items:flex-start;}
+}
+</style>
 </head>
 <body>
-    <div class="video-bg">
-        <video autoplay muted loop playsinline>
-            <source src="bg-video.mp4" type="video/mp4">
-        </video>
+
+<!-- BG SHAPES -->
+<div class="bg-shapes">
+  <div class="bg-shape s1"></div>
+  <div class="bg-shape s2"></div>
+  <div class="bg-shape s3"></div>
+  <div class="bg-shape s4"></div>
+  <div class="bg-shape s5"></div>
+</div>
+
+<!-- CLOUD -->
+<div class="cloud">
+  <svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="60" cy="40" rx="55" ry="22" fill="white" opacity=".9"/>
+    <ellipse cx="40" cy="30" rx="28" ry="22" fill="white" opacity=".9"/>
+    <ellipse cx="75" cy="28" rx="22" ry="18" fill="white" opacity=".9"/>
+  </svg>
+</div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo-nav">FOVORSE</div>
+  <nav>
+    <ul>
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="services.html">⚡ Powers</a></li>
+      <li><a href="portfolio.html">🏆 Wins</a></li>
+      <li><a href="packages.html">🎁 Plans</a></li>
+      <li><a href="why-us.html">🦸 Why Us</a></li>
+      <li><a href="contact.html">📩 Contact</a></li>
+    </ul>
+  </nav>
+  <a href="contact.html" class="btn-nav">Join the Squad! 🚀</a>
+</header>
+
+<!-- HERO -->
+<section class="hero section-wrap" id="home">
+  <div class="hero-inner">
+    <div class="hero-left reveal">
+      <div class="hero-tag">🎯 STRATEGY • DEV • AI POWERS</div>
+      <h1 class="hero-title">
+        We're Not Just Your Helpers.
+        <span>We Unlock Your Superpowers!</span>
+      </h1>
+      <p class="hero-text">
+        Like how Ben 10 uses the Omnitrix to become unstoppable — Fovorse gives your business the tools, analytics and AI magic to grow bigger, faster and smarter than ever!
+      </p>
+      <div class="hero-btns">
+        <a href="services.html" class="btn">See Our Powers ⚡</a>
+        <a href="contact.html" class="btn-outline">Jump In! 🚀</a>
+      </div>
     </div>
-    <div class="overlay"></div>
-
-    <header>
-        <div class="brand">TechVision</div>
-        <nav>
-            <a href="#features">Features</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#integrations">Integrations</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        <button class="cta-btn">Get Started</button>
-    </header>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Next-Gen API Platform for Modern Tech Startups</h1>
-            <p>Build, scale, and deploy APIs in minutes. Enterprise-grade infrastructure with real-time analytics, automatic scaling, and 99.99% uptime SLA.</p>
-            <button class="cta-btn" style="margin-right: 15px;">Start Free Trial</button>
-            <button style="background: transparent; border: 2px solid #00BFFF; color: #00BFFF; padding: 12px 28px; border-radius: 30px; cursor: pointer; font-weight: 600;">Watch Demo</button>
+    <div class="hero-right reveal" style="animation-delay:.15s">
+      <div class="mascot-card">
+        <span class="mascot-emoji">🦸</span>
+        <div class="mascot-name">Captain Fovorse</div>
+        <div class="mascot-role">Your Business Superhero</div>
+        <div class="mascot-powers">
+          <div class="power-row"><span class="power-icon">⚡</span> Lightning-Fast Analytics</div>
+          <div class="power-row"><span class="power-icon">🤖</span> AI Robot Automation</div>
+          <div class="power-row"><span class="power-icon">🌐</span> Super Website Building</div>
+          <div class="power-row"><span class="power-icon">📈</span> 10x Growth Strategy</div>
         </div>
-        <div class="hero-right">
-            <div class="features-box">
-                <div class="feature-row">
-                    <h4>⚡ Lightning Performance</h4>
-                    <p>Global CDN with <250ms latency</p>
-                </div>
-                <div class="feature-row">
-                    <h4>🔐 Bank-Grade Security</h4>
-                    <p>SOC 2 Type II, HIPAA, GDPR ready</p>
-                </div>
-                <div class="feature-row">
-                    <h4>📊 Real-Time Monitoring</h4>
-                    <p>Advanced analytics & alerting</p>
-                </div>
-                <div class="feature-row">
-                    <h4>🚀 Auto-Scaling</h4>
-                    <p>Handle millions of requests</p>
-                </div>
-            </div>
-        </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="pricing" id="pricing">
-        <h2 class="section-title">Simple, Transparent Pricing</h2>
-        <div class="pricing-grid">
-            <div class="price-card">
-                <h3>Starter</h3>
-                <div class="amount">$0</div>
-                <p style="color: #afc9ff; margin-bottom: 20px;">Perfect for testing</p>
-                <ul>
-                    <li>10k API calls</li>
-                    <li>1 GB storage</li>
-                    <li>Community support</li>
-                </ul>
-                <button class="cta-btn" style="width: 100%; margin-top: 20px; background: linear-gradient(135deg, #0099FF, #00BFFF);">Get Started Free</button>
-            </div>
-            <div class="price-card" style="border: 2px solid #00BFFF; position: relative; top: -10px;">
-                <h3>Professional</h3>
-                <div class="amount">$49</div>
-                <p style="color: #afc9ff; margin-bottom: 20px;">Per month</p>
-                <ul>
-                    <li>Unlimited API calls</li>
-                    <li>100 GB storage</li>
-                    <li>Priority support</li>
-                </ul>
-                <button class="cta-btn" style="width: 100%; margin-top: 20px;">Start Trial</button>
-            </div>
-            <div class="price-card">
-                <h3>Enterprise</h3>
-                <div class="amount">Custom</div>
-                <p style="color: #afc9ff; margin-bottom: 20px;">Custom pricing</p>
-                <ul>
-                    <li>White-label options</li>
-                    <li>Dedicated support</li>
-                    <li>On-premise deployment</li>
-                </ul>
-                <button class="cta-btn" style="width: 100%; margin-top: 20px;">Contact Sales</button>
-            </div>
-        </div>
-    </section>
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">🚀 Strategy&nbsp;</span>
+    <span class="marquee-item">⭐ Development&nbsp;</span>
+    <span class="marquee-item">🤖 AI Automation&nbsp;</span>
+    <span class="marquee-item">📊 Analytics&nbsp;</span>
+    <span class="marquee-item">🔥 Growth&nbsp;</span>
+    <span class="marquee-item">💡 Innovation&nbsp;</span>
+    <span class="marquee-item">🏆 Results&nbsp;</span>
+    <span class="marquee-item">🎯 Precision&nbsp;</span>
+    <span class="marquee-item">🚀 Strategy&nbsp;</span>
+    <span class="marquee-item">⭐ Development&nbsp;</span>
+    <span class="marquee-item">🤖 AI Automation&nbsp;</span>
+    <span class="marquee-item">📊 Analytics&nbsp;</span>
+    <span class="marquee-item">🔥 Growth&nbsp;</span>
+    <span class="marquee-item">💡 Innovation&nbsp;</span>
+    <span class="marquee-item">🏆 Results&nbsp;</span>
+    <span class="marquee-item">🎯 Precision&nbsp;</span>
+  </div>
+</div>
 
-    <section class="integrations" id="integrations">
-        <h2 class="section-title">Integrations with 500+ Services</h2>
-        <div class="int-grid">
-            <div class="int-item">Stripe</div>
-            <div class="int-item">Auth0</div>
-            <div class="int-item">Slack</div>
-            <div class="int-item">GitHub</div>
-            <div class="int-item">AWS Lambda</div>
-            <div class="int-item">Firebase</div>
-            <div class="int-item">Datadog</div>
-            <div class="int-item">SendGrid</div>
-        </div>
-    </section>
+<!-- STATS -->
+<section class="stats-section section-wrap reveal" id="stats">
+  <div class="section-header">
+    <h2>Look at These Epic Numbers! 🏆</h2>
+    <p>From tiny startups to growing champions — just like Chotta Bheem going from village kid to the strongest hero around!</p>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-emoji">🏅</span>
+      <div class="stat-num" data-target="120">0</div>
+      <div class="stat-label">Quests Completed</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-emoji">❤️</span>
+      <div class="stat-num" data-target="95">0</div>
+      <div class="stat-label">Hero Retention %</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-emoji">💰</span>
+      <div class="stat-num" data-target="350">0</div>
+      <div class="stat-label">Average ROAS %</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-emoji">🛡️</span>
+      <div class="stat-num" style="-webkit-text-fill-color:var(--sky);">24/7</div>
+      <div class="stat-label">Always On Guard</div>
+    </div>
+  </div>
+</section>
 
-    <section class="cta" id="contact">
-        <h2>Ready to Build Better APIs?</h2>
-        <p>Join 10,000+ startups scaling with TechVision today</p>
-        <button class="cta-btn" style="padding: 16px 45px; font-size: 16px;">Start Your Free Trial</button>
-    </section>
+<!-- ABOUT / PHILOSOPHY -->
+<section class="about-section section-wrap reveal">
+  <div class="about-inner">
+    <h2>Smart Moves Beat Random Guessing Every Time! 🧠</h2>
+    <p>
+      Doremon doesn't just pull anything from his pocket — he picks the perfect gadget! That's us. Every decision is powered by data, every strategy is built to win, and we never waste your time on stuff that doesn't work.
+    </p>
+    <div class="pillars-grid">
+      <div class="pillar reveal">
+        <span class="pillar-icon">🔬</span>
+        <h3>Data First</h3>
+        <p>Like a scientist's lab — every campaign we run starts with deep research and real numbers, not guesswork.</p>
+      </div>
+      <div class="pillar reveal" style="animation-delay:.1s">
+        <span class="pillar-icon">📈</span>
+        <h3>Growth Focused</h3>
+        <p>We chase real wins — more customers, more sales, more revenue — not just likes and views that don't matter.</p>
+      </div>
+      <div class="pillar reveal" style="animation-delay:.2s">
+        <span class="pillar-icon">🤖</span>
+        <h3>AI Powered</h3>
+        <p>Smart robot tools help your business work faster and reach more people — just like having a robot sidekick!</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <footer>
-        <h3>TechVision</h3>
-        <p>The fastest way to deploy scalable APIs • 2026</p>
-    </footer>
+<!-- PROCESS -->
+<section class="process-section section-wrap reveal">
+  <div class="section-header">
+    <h2>Our 4-Step Hero Training Plan! 🎮</h2>
+    <p>Just like how every superhero has an origin story, every successful business needs a solid plan.</p>
+  </div>
+  <div class="process-grid">
+    <div class="process-card reveal">
+      <span class="process-icon">🔍</span>
+      <div class="process-num">01</div>
+      <h3>Scout &amp; Research</h3>
+      <p>We dig deep into your market, study rivals and find out exactly who your customers are — like a detective on a mission!</p>
+    </div>
+    <div class="process-card reveal" style="animation-delay:.1s">
+      <span class="process-icon">🗺️</span>
+      <div class="process-num">02</div>
+      <h3>Draw the Map</h3>
+      <p>We design a crystal-clear growth roadmap made just for your business — no copy-paste plans here!</p>
+    </div>
+    <div class="process-card reveal" style="animation-delay:.2s">
+      <span class="process-icon">⚔️</span>
+      <div class="process-num">03</div>
+      <h3>Battle Mode ON</h3>
+      <p>Marketing, web development and automation — all fired up at once with laser-sharp precision and speed!</p>
+    </div>
+    <div class="process-card reveal" style="animation-delay:.3s">
+      <span class="process-icon">🏆</span>
+      <div class="process-num">04</div>
+      <h3>Level Up!</h3>
+      <p>We keep checking the scoreboard and tweaking the game plan so your business keeps getting stronger every day!</p>
+    </div>
+  </div>
+</section>
 
-    <script src="script.js"></script>
+<!-- SERVICES -->
+<section class="services-section section-wrap reveal" id="services">
+  <div class="section-header">
+    <h2>Our Superpower Arsenal! ⚡</h2>
+    <p>Every hero needs the right tools. Here's what we bring to your team — strategy before everything!</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">📣</span>
+      <h3>Supercharged Digital Marketing</h3>
+      <p>SEO, paid ads, social media campaigns, email blasts and analytics — we make sure your brand gets noticed everywhere online!</p>
+    </div>
+    <div class="service-card reveal" style="animation-delay:.08s">
+      <span class="service-icon">🌐</span>
+      <h3>Turbo Website Building</h3>
+      <p>Fast, beautiful websites that don't just look cool — they turn visitors into loyal customers like magic!</p>
+    </div>
+    <div class="service-card reveal" style="animation-delay:.16s">
+      <span class="service-icon">🖥️</span>
+      <h3>Full-Stack Tech Powers</h3>
+      <p>Web apps, SaaS platforms, smart APIs and rock-solid systems that scale up as your business grows bigger and bigger!</p>
+    </div>
+    <div class="service-card reveal" style="animation-delay:.24s">
+      <span class="service-icon">🔭</span>
+      <h3>Market Intelligence</h3>
+      <p>We study your competition like a hawk and reveal the hidden secrets your industry isn't telling you — then use that to WIN!</p>
+    </div>
+    <div class="service-card reveal" style="animation-delay:.32s">
+      <span class="service-icon">🤖</span>
+      <h3>AI Robot Automation</h3>
+      <p>Set up smart bots and automated workflows so your business runs on autopilot — like having 100 helpful robots on your team!</p>
+    </div>
+    <div class="service-card reveal" style="animation-delay:.40s">
+      <span class="service-icon">🚀</span>
+      <h3>Rocket Growth Strategy</h3>
+      <p>Revenue-focused scaling plans that are tailor-made for YOUR business goals — not cookie-cutter advice everyone else gets!</p>
+    </div>
+  </div>
+  <div class="view-more reveal">
+    <a href="services.html" class="btn">See All Superpowers 💥</a>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio-section section-wrap reveal" id="portfolio">
+  <div class="section-header">
+    <h2>Our Greatest Battles Won! 🏆</h2>
+    <p>Every mission started with a big challenge. Here's how we saved the day — backed by pure strategy and data!</p>
+  </div>
+  <div class="portfolio-grid">
+    <div class="portfolio-card reveal">
+      <div class="port-banner pb-1">🛒</div>
+      <div class="port-body">
+        <div class="port-tag">⭐ E-Commerce Victory</div>
+        <h3>The Mega Sales Rescue</h3>
+        <p>Revenue shot up 210% in just 5 months! We unlocked hidden SEO powers and launched battle-tested paid ad campaigns that crushed the competition.</p>
+      </div>
+    </div>
+    <div class="portfolio-card reveal" style="animation-delay:.1s">
+      <div class="port-banner pb-2">💻</div>
+      <div class="port-body">
+        <div class="port-tag">🎯 Conversion Quest</div>
+        <h3>The SaaS Page Transformation</h3>
+        <p>Conversion rate leaped from 1.2% all the way to 4.7% — like a caterpillar becoming a butterfly — through a full strategic website overhaul!</p>
+      </div>
+    </div>
+    <div class="portfolio-card reveal" style="animation-delay:.2s">
+      <div class="port-banner pb-3">🤖</div>
+      <div class="port-body">
+        <div class="port-tag">🤖 Automation Win</div>
+        <h3>The Robot Revolution</h3>
+        <p>We automated 60% of boring, repetitive tasks and doubled the team's monthly output — giving them back hours every single week to focus on the big stuff!</p>
+      </div>
+    </div>
+  </div>
+  <div class="view-more reveal">
+    <a href="portfolio.html" class="btn">See All Epic Wins 🏆</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section section-wrap reveal">
+  <div class="section-header">
+    <h2>What Our Heroes Say About Us! 🌟</h2>
+    <p>Don't just take our word for it — hear from the businesses whose stories we helped write!</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+      <p class="testi-text">"Fovorse flipped our entire digital game upside-down — in the best way! Leads doubled and our team finally feels like a superhero squad."</p>
+      <div class="testi-author">🦸 — Startup Founder</div>
+    </div>
+    <div class="testi-card reveal" style="animation-delay:.1s">
+      <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+      <p class="testi-text">"Finally found an agency that cares about REAL results — not just fancy-looking charts that mean nothing for our actual business growth!"</p>
+      <div class="testi-author">💻 — SaaS Company</div>
+    </div>
+    <div class="testi-card reveal" style="animation-delay:.2s">
+      <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+      <p class="testi-text">"Our shop went from doing okay to absolutely booming in under six months. Partnering with Fovorse is the best move we ever made — period!"</p>
+      <div class="testi-author">🛒 — E-commerce Brand</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section section-wrap reveal">
+  <h2>Ready to Become a Business Superhero? 🦸🔥</h2>
+  <p>Let's team up, build your growth strategy and take your business to the next level together!</p>
+  <a href="contact.html" class="btn-white btn-lg">Start Your Adventure! 🚀</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo-nav">FOVORSE</span>
+      <p>Your strategy-powered growth squad — helping businesses level up smarter, faster and stronger every single day.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="#">🐦</a>
+        <a class="social-btn" href="#">📸</a>
+        <a class="social-btn" href="#">💼</a>
+        <a class="social-btn" href="#">▶️</a>
+      </div>
+    </div>
+    <div class="footer-links-col">
+      <h4>Quick Portals</h4>
+      <a href="index.html">🏠 Home Base</a>
+      <a href="services.html">⚡ Our Powers</a>
+      <a href="portfolio.html">🏆 Epic Wins</a>
+      <a href="packages.html">🎁 Battle Plans</a>
+      <a href="why-us.html">🦸 Why Fovorse?</a>
+      <a href="contact.html">📩 Call the Squad</a>
+    </div>
+    <div class="footer-links-col">
+      <h4>Our Superpowers</h4>
+      <a href="#">📣 Digital Marketing</a>
+      <a href="#">🌐 Web Development</a>
+      <a href="#">🖥️ Full-Stack Dev</a>
+      <a href="#">🤖 AI Automation</a>
+      <a href="#">🔭 Market Research</a>
+      <a href="#">🚀 Growth Strategy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <span>Fovorse</span>. All Rights Reserved. Made with <span>❤️</span> &amp; lots of ⭐ strategy!</p>
+  </div>
+</footer>
+
+<script>
+/* ── Counter animation ─────────────────────────────────── */
+function animateCounter(el){
+  const target = +el.getAttribute('data-target');
+  const suffix = el.closest('.stat-card') ? (el.closest('.stat-card').querySelector('.stat-label').textContent.includes('%') ? '%' : '+') : '+';
+  let current = 0;
+  const step  = Math.ceil(target / 60);
+  const timer = setInterval(()=>{
+    current = Math.min(current + step, target);
+    el.textContent = current + (current >= target ? suffix : '');
+    if(current >= target) clearInterval(timer);
+  }, 30);
+}
+
+/* ── Intersection Observer for reveal + counters ─────────── */
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      // counter
+      const counters = entry.target.querySelectorAll('[data-target]');
+      counters.forEach(c => animateCounter(c));
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.15});
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── Floating emojis on click ────────────────────────────── */
+const emojis = ['⭐','🚀','💥','🎉','✨','🌟','💡','🏆','🎯','❤️'];
+document.addEventListener('click', e=>{
+  for(let i=0;i<3;i++){
+    const em = document.createElement('div');
+    em.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    em.style.cssText = `
+      position:fixed;
+      left:${e.clientX + (Math.random()-0.5)*40}px;
+      top:${e.clientY + (Math.random()-0.5)*40}px;
+      font-size:${20+Math.random()*16}px;
+      pointer-events:none;
+      z-index:9999;
+      animation:slideUp .9s ease forwards;
+      transition:opacity .3s;
+    `;
+    document.body.appendChild(em);
+    setTimeout(()=>em.remove(), 950);
+  }
+});
+
+/* ── Navbar scroll shadow ─────────────────────────────────── */
+window.addEventListener('scroll',()=>{
+  const nav = document.querySelector('.navbar');
+  nav.style.boxShadow = scrollY > 40 ? '0 8px 32px rgba(0,0,0,.13)' : '0 4px 20px rgba(0,0,0,.08)';
+});
+
+/* ── Add slideUp keyframe via JS ─────────────────────────── */
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes slideUp{
+    from{transform:translateY(0);opacity:1}
+    to{transform:translateY(-80px);opacity:0}
+  }
+`;
+document.head.appendChild(style);
+
+/* ── Mascot hover bounce ─────────────────────────────────── */
+document.querySelector('.mascot-card').addEventListener('mouseenter',function(){
+  this.style.transform='rotate(-3deg) scale(1.03)';
+});
+document.querySelector('.mascot-card').addEventListener('mouseleave',function(){
+  this.style.transform='';
+});
+</script>
 </body>
 </html>
