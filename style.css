@@ -1276,3 +1276,15 @@ section{
         font-size:15px;
     }
 }
+.template-preview-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+    transition: 0.5s ease;
+}
+
+.template-card:hover .template-preview-image {
+    transform: scale(1.03);
+}
