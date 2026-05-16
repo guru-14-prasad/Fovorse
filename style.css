@@ -237,9 +237,12 @@ section{
     padding:120px 8%;
 }
 
-.section-header{
-    text-align:center;
-    margin-bottom:70px;
+.section-header {
+    position: relative;
+    z-index: 20;
+    text-align: center;
+    margin-bottom: 60px;
+    color: white;
 }
 
 .section-header h2{
@@ -255,13 +258,15 @@ section{
 
 /* PAGE HERO */
 
-.page-hero{
-    min-height:80vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding: 150px 8%;
+.page-hero {
+    position: relative;
+    z-index: 10;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 8% 80px;
 }
 
 .page-hero-content h1{
@@ -273,6 +278,14 @@ section{
 .page-hero-content p{
     font-size:24px;
     color:#9fd0ff;
+}
+
+.page-hero-content {
+    position: relative;
+    z-index: 20;
+    color: #ffffff;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 /* SERVICE CONTENT */
@@ -1287,4 +1300,65 @@ section{
 
 .template-card:hover .template-preview-image {
     transform: scale(1.03);
+}
+
+/* ---------- WEBSITE CONTENT FIX ---------- */
+
+body {
+    color: white;
+}
+
+section,
+.container,
+.hero,
+.page-hero,
+.page-content {
+    position: relative;
+    z-index: 5;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, span, a, li, div {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.home-content,
+.portfolio-content,
+.packages-content,
+.why-us-content,
+.contact-content,
+.service-content,
+.section-header,
+.page-hero-content {
+    position: relative;
+    z-index: 50;
+}
+
+.video-container,
+video {
+    z-index: -2;
+}
+
+.overlay {
+    z-index: -1;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.page-hero h1,
+.page-hero p,
+.section-header h2,
+.section-header p {
+    color: #ffffff !important;
+}
+
+main,
+section {
+    display: block !important;
 }
