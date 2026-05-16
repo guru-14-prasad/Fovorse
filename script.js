@@ -55,6 +55,7 @@ function revealSections(){
 }
 
 window.addEventListener("scroll", revealSections);
+window.addEventListener("load", revealSections);
 revealSections();
 
 // =======================
@@ -224,17 +225,64 @@ const bgVideos = [
 let currentVideoIndex = 0;
 
 function switchToVideo(newIndex) {
-    if (newIndex === currentVideoIndex || !bgVideos[newIndex]) return;
+    if (!bgVideos[newIndex]) return;
+    if (newIndex === currentVideoIndex) return;
 
-    bgVideos[currentVideoIndex].classList.remove("active");
-    bgVideos[currentVideoIndex].pause();
+    bgVideos.forEach((video, index) => {
+        if (index === newIndex) {
+            video.classList.add("active");
+            video.muted = true;
+            video.play().catch(e => {});
+        } else {
+            video.classList.remove("active");
+        }
+    });
 
     currentVideoIndex = newIndex;
+}
 
-    bgVideos[currentVideoIndex].classList.add("active");
-    if (bgVideos[currentVideoIndex].paused) {
-        bgVideos[currentVideoIndex].play().catch(e => console.log("Video play failed:", e));
+function getScrollVideoIndex() {
+    if (bgVideos.length <= 1) return 0;
+
+    const scrollTop = Math.max(
+        document.documentElement.scrollTop,
+        document.body.scrollTop,
+        window.pageYOffset
+    );
+
+    const scrollHeight = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight
+    ) - window.innerHeight;
+
+    if (scrollHeight <= 0) return 0;
+
+    const scrollRatio = Math.min(Math.max(scrollTop / scrollHeight, 0), 1);
+
+    if (bgVideos.length === 3) {
+        if (scrollRatio < 1 / 3) return 0;
+        if (scrollRatio < 2 / 3) return 1;
+        return 2;
     }
+
+    return Math.min(bgVideos.length - 1, Math.floor(scrollRatio * bgVideos.length));
+}
+
+function syncVideosOnScroll() {
+    const newVideoIndex = getScrollVideoIndex();
+    console.log("scroll video index:", newVideoIndex, "active video:", bgVideos[newVideoIndex]?.id);
+    switchToVideo(newVideoIndex);
+}
+
+function initScrollVideoSync() {
+    syncVideosOnScroll();
+    window.addEventListener("scroll", syncVideosOnScroll);
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initScrollVideoSync);
+} else {
+    initScrollVideoSync();
 }
 
 // On portfolio page: sync each template card hover/scroll to its matching video
@@ -256,30 +304,7 @@ if (templateCards.length > 0 && bgVideos.length >= 5) {
     }, { threshold: 0.5 });
 
     templateCards.forEach(card => cardObserver.observe(card));
-} else {
-    // Fallback for pages with fewer videos: section-based switching
-    window.addEventListener("scroll", () => {
-        const sections = document.querySelectorAll("section");
-        let currentSectionIndex = 0;
-
-        sections.forEach((section, index) => {
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= window.innerHeight / 2 && rect.top + rect.height >= window.innerHeight / 2) {
-                currentSectionIndex = index;
-            }
-        });
-
-        const totalVideos = bgVideos.length;
-        const totalSections = sections.length;
-        const newVideoIndex = Math.min(
-            Math.floor((currentSectionIndex / totalSections) * totalVideos),
-            totalVideos - 1
-        );
-
-        switchToVideo(newVideoIndex);
-    });
 }
-
 // Subtle playback rate effect on scroll
 window.addEventListener("scroll", () => {
     const scrollRatio = window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight || 1);
@@ -370,14 +395,20 @@ window.addEventListener(
     document.documentElement.scrollHeight
     - window.innerHeight;
 
+    if (docHeight <= 0) return;
+
     const scrollPercent =
     (scrollTop / docHeight)
     * 100;
 
-    document.querySelector(
+    const progressBar = document.querySelector(
     ".progress-bar"
-    ).style.width =
-    scrollPercent + "%";
+    );
+
+    if (progressBar) {
+        progressBar.style.width =
+        scrollPercent + "%";
+    }
 });
 
 // PARALLAX HERO
@@ -445,23 +476,4 @@ el.style.transition =
 observer.observe(el);
 });
 
-const reveals =
-document.querySelectorAll(".reveal");
-
-window.addEventListener(
-"scroll",
-()=>{
-
-reveals.forEach(el=>{
-
-const top =
-el.getBoundingClientRect().top;
-
-if(top < window.innerHeight - 100){
-
-el.classList.add("active");
-
-}
-
-});
-});
+// (reveal scroll already handled above)
