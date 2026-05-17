@@ -3,145 +3,1426 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WellnessFlow - Health & Wellness Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Fovorse | Strategy Driven Growth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #f5f5f0, #e8f0e0); color: #2d3d2d; }
-        
-        .video-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; }
-        .video-bg video { width: 100%; height: 100%; object-fit: cover; opacity: 0.2; }
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: linear-gradient(135deg, rgba(245,245,240,0.95), rgba(232,240,224,0.95)); z-index: -1; }
-        
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(245,245,240,0.85); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .brand { font-size: 24px; font-weight: 800; color: #7BA65F; }
-        nav { display: flex; gap: 40px; }
-        nav a { color: #4a5f4a; text-decoration: none; transition: .3s; font-size: 14px; }
-        nav a:hover { color: #9DC183; }
-        .cta-btn { background: linear-gradient(135deg, #7BA65F, #9DC183); color: white; padding: 12px 24px; border-radius: 50px; border: none; cursor: pointer; font-weight: 600; font-size: 13px; }
-        
-        .hero { min-height: 100vh; display: flex; align-items: center; padding: 140px 8% 80px; gap: 80px; }
-        .hero-text h1 { font-size: 56px; line-height: 1.2; margin-bottom: 25px; color: #4a5f4a; }
-        .hero-text p { font-size: 18px; color: #6a7d6a; line-height: 1.8; margin-bottom: 40px; max-width: 550px; }
-        .features-list { display: grid; gap: 20px; }
-        .feature-item { display: flex; gap: 15px; align-items: flex-start; }
-        .feature-item::before { content: '✓'; color: #7BA65F; font-weight: 800; font-size: 20px; }
-        .feature-item span { color: #6a7d6a; font-size: 15px; }
-        
-        .benefits { padding: 120px 8%; background: rgba(157, 193, 131, 0.05); }
-        .benefits h2 { font-size: 48px; color: #4a5f4a; margin-bottom: 70px; text-align: center; }
-        .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-        .benefit-card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: center; transition: .4s; }
-        .benefit-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(123,166,95,0.15); }
-        .benefit-card .icon { font-size: 48px; margin-bottom: 20px; }
-        .benefit-card h3 { color: #4a5f4a; margin-bottom: 12px; font-size: 20px; }
-        .benefit-card p { color: #7a8d7a; font-size: 14px; line-height: 1.6; }
-        
-        .testimonials { padding: 120px 8%; }
-        .testimonials h2 { font-size: 48px; color: #4a5f4a; margin-bottom: 60px; text-align: center; }
-        .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .testimonial { background: white; padding: 35px; border-radius: 15px; border-left: 4px solid #9DC183; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
-        .testimonial p { color: #6a7d6a; font-size: 14px; margin-bottom: 20px; line-height: 1.7; }
-        .testimonial-author { font-weight: 600; color: #4a5f4a; font-size: 14px; }
-        
-        .cta { padding: 100px 8%; background: linear-gradient(135deg, #7BA65F, #9DC183); color: white; text-align: center; }
-        .cta h2 { font-size: 45px; margin-bottom: 20px; }
-        .cta p { font-size: 18px; margin-bottom: 40px; opacity: 0.95; }
-        
-        footer { padding: 50px 8%; text-align: center; background: #f5f5f0; color: #6a7d6a; border-top: 1px solid rgba(157,193,131,0.2); }
-        footer h3 { color: #7BA65F; margin-bottom: 10px; }
-        
-        @media (max-width: 900px) {
-            .hero { flex-direction: column; }
-            .benefits-grid { grid-template-columns: 1fr; }
-            .testimonial-grid { grid-template-columns: 1fr; }
-            .hero-text h1 { font-size: 40px; }
+        :root {
+            --saffron:    #FF6B00;
+            --turmeric:   #F5A623;
+            --cardamom:   #2D6A4F;
+            --cream:      #FFF8F0;
+            --parchment:  #FEF3E2;
+            --spice-red:  #C0392B;
+            --rose:       #E8A87C;
+            --deep-green: #1B4332;
+            --charcoal:   #1C1C1C;
+            --warm-white: #FFFDF9;
+        }
+
+
+        /* ─── CUSTOM CURSOR ─── */
+        * { cursor: none !important; }
+
+        #cursor-wrap {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999999;
+            top: 0; left: 0;
+        }
+
+        /* Outer ring */
+        .cur-ring {
+            position: fixed;
+            width: 44px; height: 44px;
+            border: 2px solid var(--saffron);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width .25s, height .25s, border-color .25s, background .25s;
+            pointer-events: none;
+            z-index: 999999;
+            box-shadow: 0 0 14px rgba(255,107,0,0.35), inset 0 0 8px rgba(255,107,0,0.1);
+        }
+
+        /* Food emoji dot in center */
+        .cur-food {
+            position: fixed;
+            transform: translate(-50%, -55%);
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 999999;
+            transition: font-size .2s ease;
+            filter: drop-shadow(0 2px 4px rgba(255,107,0,0.5));
+            animation: curSpin 6s linear infinite;
+            line-height: 1;
+        }
+
+        /* Trail dots */
+        .cur-trail {
+            position: fixed;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--saffron);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 999998;
+            opacity: 0.5;
+        }
+
+        /* Hover state — ring expands */
+        .cur-ring.hovered {
+            width: 60px; height: 60px;
+            background: rgba(255,107,0,0.08);
+            border-color: var(--turmeric);
+            box-shadow: 0 0 24px rgba(255,107,0,0.4);
+        }
+        .cur-food.hovered {
+            font-size: 26px;
+        }
+
+        @keyframes curSpin {
+            0%   { transform: translate(-50%, -55%) rotate(0deg); }
+            100% { transform: translate(-50%, -55%) rotate(360deg); }
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            overflow-x: hidden;
+        }
+
+        /* ─── CANVAS BG ─── */
+        #foodCanvas {
+            position: fixed; top:0; left:0;
+            width:100%; height:100vh;
+            z-index: -3; pointer-events: none;
+        }
+
+        .bg-overlay {
+            position: fixed; top:0; left:0;
+            width:100%; height:100vh;
+            background: linear-gradient(160deg,
+                rgba(255,248,240,0.55) 0%,
+                rgba(254,243,226,0.50) 50%,
+                rgba(255,248,240,0.55) 100%);
+            z-index: -2;
+        }
+
+        /* Mandala pattern overlay */
+        .mandala-bg {
+            position: fixed; top:0; left:0;
+            width:100%; height:100%;
+            z-index: -1; pointer-events: none;
+            opacity: 0.12;
+            background-image: repeating-conic-gradient(
+                from 0deg at 50% 50%,
+                #FF6B00 0deg 5deg,
+                transparent 5deg 30deg,
+                #F5A623 30deg 35deg,
+                transparent 35deg 60deg
+            );
+            background-size: 180px 180px;
+        }
+
+        /* ─── PROGRESS BAR ─── */
+        .progress-bar {
+            position: fixed; top:0; left:0;
+            height:4px; width:0%;
+            background: linear-gradient(90deg, var(--saffron), var(--turmeric), var(--spice-red));
+            z-index: 9999;
+            box-shadow: 0 0 12px rgba(255,107,0,0.5);
+        }
+
+        /* ─── HEADER ─── */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            position: fixed; top:0; width:100%;
+            z-index: 1000;
+            background: rgba(255,248,240,0.88);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,107,0,0.15);
+            transition: .4s;
+        }
+        header.scrolled {
+            background: rgba(255,248,240,0.97);
+            box-shadow: 0 4px 30px rgba(255,107,0,0.1);
+        }
+
+        .brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--saffron);
+            letter-spacing: 1px;
+            position: relative;
+        }
+        .brand span { color: var(--cardamom); }
+        .brand::after {
+            content: '🍛';
+            font-size: 16px;
+            margin-left: 6px;
+        }
+
+        nav { display: flex; gap: 36px; }
+        nav a {
+            font-size: 14px;
+            font-weight: 500;
+            color: #5a4030;
+            text-decoration: none;
+            transition: .3s;
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute; bottom:-3px; left:0;
+            width:0; height:2px;
+            background: var(--saffron);
+            transition: .3s;
+            border-radius: 2px;
+        }
+        nav a:hover { color: var(--saffron); }
+        nav a:hover::after { width: 100%; }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--saffron), var(--turmeric));
+            color: white;
+            padding: 11px 26px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            font-family: 'DM Sans', sans-serif;
+            transition: .4s;
+            box-shadow: 0 4px 15px rgba(255,107,0,0.3);
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 8px 25px rgba(255,107,0,0.4);
+        }
+
+        /* ─── SPICE DOTS DECORATION ─── */
+        .spice-dots {
+            display: inline-flex; gap: 6px; align-items: center;
+            margin-bottom: 16px;
+        }
+        .spice-dot { width:8px; height:8px; border-radius:50%; }
+        .spice-dot:nth-child(1) { background: var(--saffron); }
+        .spice-dot:nth-child(2) { background: var(--turmeric); }
+        .spice-dot:nth-child(3) { background: var(--cardamom); }
+        .spice-dot:nth-child(4) { background: var(--spice-red); }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex; align-items: center;
+            padding: 140px 7% 90px;
+            gap: 70px;
+            position: relative;
+        }
+        .hero-left { flex: 1.1; }
+
+        .tagline-pill {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: linear-gradient(135deg, rgba(255,107,0,0.1), rgba(245,166,35,0.1));
+            border: 1px solid rgba(255,107,0,0.25);
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--saffron);
+            letter-spacing: 1.5px;
+            margin-bottom: 28px;
+            animation: fadeSlideUp 0.8s ease;
+        }
+
+        .hero-left h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 66px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--charcoal);
+            animation: fadeSlideUp 1s ease;
+        }
+        .hero-left h1 em {
+            font-style: italic;
+            color: var(--saffron);
+        }
+        .hero-left h1 span {
+            display: block;
+            color: var(--cardamom);
+        }
+
+        .hero-left p {
+            font-size: 18px;
+            color: #6a5040;
+            line-height: 1.85;
+            max-width: 540px;
+            margin-bottom: 40px;
+            animation: fadeSlideUp 1.2s ease;
+        }
+
+        .features-list {
+            display: grid; gap: 14px;
+            animation: fadeSlideUp 1.4s ease;
+        }
+        .feature-item {
+            display: flex; gap: 14px; align-items: center;
+            padding: 14px 20px;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid rgba(255,107,0,0.1);
+            box-shadow: 0 2px 12px rgba(255,107,0,0.06);
+            transition: .35s;
+            cursor: default;
+        }
+        .feature-item:hover {
+            border-color: rgba(255,107,0,0.3);
+            box-shadow: 0 6px 24px rgba(255,107,0,0.12);
+            transform: translateX(8px);
+        }
+        .fi-icon {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, rgba(255,107,0,0.12), rgba(245,166,35,0.12));
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px; flex-shrink: 0;
+        }
+        .feature-item span { font-size: 14px; font-weight: 500; color: #4a3520; }
+
+        .hero-buttons {
+            display: flex; gap: 16px; margin-top: 36px;
+            animation: fadeSlideUp 1.6s ease;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--cardamom);
+            color: var(--cardamom);
+            padding: 11px 26px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            font-family: 'DM Sans', sans-serif;
+            transition: .35s;
+        }
+        .btn-outline:hover {
+            background: var(--cardamom);
+            color: white;
+            box-shadow: 0 6px 20px rgba(45,106,79,0.3);
+        }
+
+        /* ─── HERO RIGHT — Thali Illustration ─── */
+        .hero-right {
+            flex: 1;
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+            animation: fadeSlideUp 1.2s ease;
+        }
+
+        /* ─── DIVIDER ─── */
+        .section-divider {
+            display: flex; align-items: center; gap: 20px;
+            padding: 0 7%; margin: 0 0 60px;
+        }
+        .divider-line { flex:1; height:1px; background: linear-gradient(90deg, transparent, rgba(255,107,0,0.25), transparent); }
+        .divider-icon { font-size: 22px; }
+
+        /* ─── SECTIONS ─── */
+        section { padding: 100px 7%; }
+
+        .section-label {
+            display: block;
+            font-size: 11px; font-weight: 700;
+            color: var(--saffron);
+            letter-spacing: 3px; text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .section-header { text-align: center; margin-bottom: 70px; }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 46px;
+            color: var(--charcoal);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .section-header h2 em { color: var(--saffron); font-style: italic; }
+        .section-header p { font-size: 17px; color: #6a5040; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+
+        /* ─── STATS STRIP ─── */
+        .stats-strip {
+            padding: 70px 7%;
+            background: linear-gradient(135deg, var(--saffron), var(--turmeric));
+            position: relative; overflow: hidden;
+        }
+        .stats-strip::before {
+            content: '';
+            position: absolute; top:0; left:0; right:0; bottom:0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3Ccircle cx='30' cy='30' r='10'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-size: 60px 60px;
+        }
+        .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 40px; position: relative; z-index:1; }
+        .stat-item { text-align: center; }
+        .stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 52px; font-weight: 900;
+            color: white; line-height: 1;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+        .stat-label { font-size: 14px; color: rgba(255,255,255,0.88); font-weight: 500; }
+
+        /* ─── PHILOSOPHY / RESULTS ─── */
+        .philosophy-section { background: var(--parchment); }
+        .philo-intro {
+            max-width: 680px; margin: 0 auto 60px;
+            text-align: center;
+        }
+        .philo-intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px; line-height: 1.2;
+            color: var(--charcoal); margin-bottom: 18px;
+        }
+        .philo-intro h2 em { color: var(--saffron); font-style: italic; }
+        .philo-intro p { font-size: 17px; color: #6a5040; line-height: 1.75; }
+        .philo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+        .philo-card {
+            background: white;
+            border-radius: 18px;
+            padding: 40px 30px;
+            border: 1px solid rgba(255,107,0,0.1);
+            box-shadow: 0 4px 20px rgba(255,107,0,0.07);
+            transition: .45s;
+            position: relative; overflow: hidden;
+        }
+        .philo-card::before {
+            content: '';
+            position: absolute; bottom:0; left:0; right:0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--saffron), var(--turmeric));
+            transform: scaleX(0);
+            transition: .4s;
+        }
+        .philo-card:hover::before { transform: scaleX(1); }
+        .philo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(255,107,0,0.13);
+        }
+        .philo-icon { font-size: 44px; margin-bottom: 20px; display: block; }
+        .philo-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px; color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+        .philo-card p { font-size: 14px; color: #7a5a40; line-height: 1.7; }
+
+        /* ─── PROCESS ─── */
+        .process-section { background: white; }
+        .process-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px; }
+        .process-card {
+            border-radius: 18px;
+            padding: 40px;
+            border: 1px solid rgba(255,107,0,0.12);
+            background: linear-gradient(145deg, var(--warm-white), rgba(254,243,226,0.5));
+            position: relative; overflow: hidden;
+            transition: .45s;
+        }
+        .process-card::after {
+            content: attr(data-step);
+            position: absolute; top:20px; right:24px;
+            font-family: 'Playfair Display', serif;
+            font-size: 80px; font-weight: 900;
+            color: rgba(255,107,0,0.07);
+            line-height: 1;
+        }
+        .process-card:hover {
+            border-color: rgba(255,107,0,0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 18px 45px rgba(255,107,0,0.12);
+        }
+        .step-badge {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--saffron), var(--turmeric));
+            border-radius: 10px;
+            font-size: 14px; font-weight: 700; color: white;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 12px rgba(255,107,0,0.3);
+        }
+        .process-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px; color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+        .process-card p { font-size: 14px; color: #7a5a40; line-height: 1.75; }
+
+        /* ─── SERVICES ─── */
+        .services-section { background: var(--parchment); }
+        .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+        .service-card {
+            background: white;
+            border-radius: 18px;
+            padding: 36px 28px;
+            border: 1px solid rgba(255,107,0,0.1);
+            transition: .4s;
+            position: relative; overflow: hidden;
+            cursor: default;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute; top:0; left:0;
+            width: 4px; height: 0%;
+            background: linear-gradient(180deg, var(--saffron), var(--turmeric));
+            transition: .4s;
+            border-radius: 0 0 4px 4px;
+        }
+        .service-card:hover::before { height: 100%; }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 45px rgba(255,107,0,0.12);
+            border-color: rgba(255,107,0,0.2);
+        }
+        .svc-icon {
+            width: 54px; height: 54px;
+            background: linear-gradient(135deg, rgba(255,107,0,0.1), rgba(245,166,35,0.1));
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 26px; margin-bottom: 18px;
+            transition: .4s;
+        }
+        .service-card:hover .svc-icon {
+            background: linear-gradient(135deg, rgba(255,107,0,0.2), rgba(245,166,35,0.2));
+        }
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px; color: var(--charcoal);
+            margin-bottom: 10px;
+        }
+        .service-card p { font-size: 13px; color: #7a5a40; line-height: 1.7; }
+        .svc-tag {
+            display: inline-block;
+            margin-top: 14px;
+            font-size: 11px; font-weight: 600;
+            color: var(--saffron);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ─── PORTFOLIO ─── */
+        .portfolio-section { background: white; }
+        .port-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-bottom: 50px; }
+        .port-card {
+            border-radius: 18px;
+            padding: 38px 28px;
+            background: linear-gradient(145deg, var(--parchment), rgba(254,243,226,0.6));
+            border: 1px solid rgba(255,107,0,0.12);
+            transition: .45s;
+            position: relative; overflow: hidden;
+        }
+        .port-card::after {
+            content: '';
+            position: absolute; top:0; left:0; right:0; bottom:0;
+            background: radial-gradient(circle at 80% 20%, rgba(255,107,0,0.06), transparent 60%);
+            pointer-events: none;
+        }
+        .port-card:hover {
+            transform: perspective(800px) rotateY(-4deg) translateY(-8px);
+            box-shadow: 0 22px 55px rgba(255,107,0,0.14);
+            border-color: rgba(255,107,0,0.25);
+        }
+        .port-emoji { font-size: 42px; margin-bottom: 18px; display: block; }
+        .port-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 17px; color: var(--charcoal);
+            margin-bottom: 10px;
+        }
+        .port-card p { font-size: 13px; color: #7a5a40; line-height: 1.7; }
+        .port-badge {
+            display: inline-block; margin-top: 14px;
+            background: linear-gradient(135deg, var(--saffron), var(--turmeric));
+            color: white; font-size: 11px; font-weight: 700;
+            padding: 4px 14px; border-radius: 50px;
+            letter-spacing: 0.5px;
+        }
+        .view-more { text-align: center; }
+
+        /* ─── TESTIMONIALS ─── */
+        .testi-section { background: var(--parchment); }
+        .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+        .testi-card {
+            background: white;
+            border-radius: 18px;
+            padding: 36px;
+            border: 1px solid rgba(255,107,0,0.1);
+            box-shadow: 0 4px 16px rgba(255,107,0,0.07);
+            transition: .4s;
+            position: relative;
+        }
+        .quote-mark {
+            font-family: 'Playfair Display', serif;
+            font-size: 70px; line-height: 0.6;
+            color: rgba(255,107,0,0.12);
+            display: block; margin-bottom: 10px;
+        }
+        .testi-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 45px rgba(255,107,0,0.12);
+            border-color: rgba(255,107,0,0.2);
+        }
+        .testi-card p { font-size: 14px; color: #5a4030; line-height: 1.8; margin-bottom: 20px; font-style: italic; }
+        .testi-author {
+            display: flex; align-items: center; gap: 12px;
+        }
+        .author-avatar {
+            width: 38px; height: 38px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--saffron), var(--turmeric));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; color: white;
+        }
+        .author-name { font-weight: 600; font-size: 14px; color: var(--charcoal); }
+        .author-role { font-size: 12px; color: #9a7a60; }
+
+        /* ─── CTA ─── */
+        .cta-section {
+            padding: 110px 7%;
+            background: linear-gradient(135deg, var(--charcoal) 0%, #2d1810 100%);
+            text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute; top:0; left:0; right:0; bottom:0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(255,107,0,0.15), transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(245,166,35,0.1), transparent 50%);
+        }
+        .cta-food-row {
+            position: absolute; top:50%; left:0; right:0;
+            transform: translateY(-50%);
+            font-size: 100px; opacity: 0.04;
+            white-space: nowrap; letter-spacing: 20px;
+            animation: foodScroll 20s linear infinite;
+        }
+        @keyframes foodScroll {
+            from { transform: translateY(-50%) translateX(0); }
+            to { transform: translateY(-50%) translateX(-50%); }
+        }
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 52px; color: white;
+            margin-bottom: 18px; position: relative; z-index:1;
+        }
+        .cta-section h2 em { color: var(--turmeric); font-style: italic; }
+        .cta-section p { font-size: 18px; color: rgba(255,255,255,0.75); margin-bottom: 40px; position: relative; z-index:1; }
+        .cta-btn-white {
+            background: white; color: var(--saffron);
+            padding: 15px 45px; border-radius: 50px;
+            border: none; cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700; font-size: 15px;
+            transition: .4s;
+            box-shadow: 0 8px 30px rgba(255,107,0,0.25);
+            position: relative; z-index:1;
+        }
+        .cta-btn-white:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 14px 40px rgba(255,107,0,0.35);
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            padding: 60px 7%;
+            text-align: center;
+            background: #1a0e06;
+        }
+        footer h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--turmeric);
+            font-size: 28px; letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        footer p { color: rgba(255,255,255,0.4); font-size: 13px; margin-bottom: 6px; }
+        .footer-links { display: flex; justify-content: center; gap: 32px; margin: 20px 0; }
+        .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; transition: .3s; }
+        .footer-links a:hover { color: var(--turmeric); }
+        .footer-spices { font-size: 24px; letter-spacing: 8px; margin: 16px 0; opacity: 0.4; }
+
+        /* ─── FLOATING FOOD PARTICLES ─── */
+        .float-food {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10;
+            font-size: 28px;
+            opacity: 0;
+            animation: floatUp 12s linear infinite;
+        }
+        @keyframes floatUp {
+            0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            8%   { opacity: 0.7; }
+            50%  { opacity: 0.65; }
+            92%  { opacity: 0.6; }
+            100% { transform: translateY(-140px) rotate(360deg); opacity: 0; }
+        }
+
+        /* ─── KEYFRAMES ─── */
+        @keyframes fadeSlideUp {
+            from { opacity:0; transform: translateY(40px); }
+            to   { opacity:1; transform: translateY(0); }
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+        @keyframes thaliSpin {
+            0%,100% { transform: rotate(-3deg) scale(1); }
+            50%     { transform: rotate(3deg) scale(1.03); }
+        }
+
+        /* ─── SCROLL REVEAL ─── */
+        .reveal { opacity:0; transform: translateY(50px); transition: 0.9s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.visible { opacity:1; transform: translateY(0); }
+        .reveal-left { opacity:0; transform: translateX(-50px); transition: 0.9s cubic-bezier(0.16,1,0.3,1); }
+        .reveal-left.visible { opacity:1; transform: translateX(0); }
+
+        @media (max-width: 960px) {
+            .hero { flex-direction: column; gap: 40px; }
+            .hero-left h1 { font-size: 42px; }
+            .stats-grid { grid-template-columns: repeat(2,1fr); }
+            .philo-grid,.services-grid,.port-grid,.testi-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: 1fr; }
+            .hero-right { display: none; }
+            nav { display: none; }
+            .cta-section h2 { font-size: 36px; }
         }
     </style>
 </head>
 <body>
-    <div class="video-bg">
-        <video autoplay muted loop playsinline>
-            <source src="bg-video-3.mp4" type="video/mp4">
-        </video>
-    </div>
-    <div class="overlay"></div>
 
-    <header>
-        <div class="brand">WellnessFlow</div>
+    <!-- CUSTOM CURSOR -->
+    <div id="cursor-wrap">
+        <div class="cur-ring" id="curRing"></div>
+        <div class="cur-food" id="curFood">🍛</div>
+        <div class="cur-trail" id="curTrail1"></div>
+        <div class="cur-trail" id="curTrail2"></div>
+        <div class="cur-trail" id="curTrail3"></div>
+    </div>
+
+    <!-- PROGRESS -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- CANVAS BG -->
+    <canvas id="foodCanvas"></canvas>
+    <div class="bg-overlay"></div>
+    <div class="mandala-bg"></div>
+
+    <!-- FLOATING FOOD EMOJIS -->
+    <div id="floatingFood"></div>
+
+    <!-- NAVBAR -->
+    <header id="header">
+        <div class="brand">FOVORSE</div>
         <nav>
-            <a href="#features">Benefits</a>
-            <a href="#testimonials">Success Stories</a>
-            <a href="#pricing">Pricing</a>
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#testimonials">Clients</a>
             <a href="#contact">Contact</a>
         </nav>
-        <button class="cta-btn">Start Free Trial</button>
+        <button class="cta-btn">Let's Connect</button>
     </header>
 
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Your Personal Wellness Journey Starts Here</h1>
-            <p>Transform your health with AI-powered personalized wellness plans, nutrition guidance, and mental health support.</p>
+    <!-- ═══════════ HERO ═══════════ -->
+    <section class="hero" id="home">
+        <div class="hero-left">
+            <div class="spice-dots">
+                <div class="spice-dot"></div><div class="spice-dot"></div>
+                <div class="spice-dot"></div><div class="spice-dot"></div>
+            </div>
+            <div class="tagline-pill">🌶 PLANNING &nbsp;•&nbsp; DEVELOPMENT &nbsp;•&nbsp; AI AUTOMATION</div>
+            <h1>We Don't Just<br>Launch Ads.<br><em>We Engineer</em><span>Growth.</span></h1>
+            <p>Fovorse empowers businesses to expand intelligently — through deep analytics, cutting-edge web development, AI-driven automation, and revenue-focused strategy. Served fresh. Every time.</p>
             <div class="features-list">
-                <div class="feature-item"><span>AI-Powered Health Coaching</span></div>
-                <div class="feature-item"><span>Personalized Nutrition Plans</span></div>
-                <div class="feature-item"><span>Meditation & Mindfulness</span></div>
-                <div class="feature-item"><span>Progress Tracking Dashboard</span></div>
+                <div class="feature-item">
+                    <div class="fi-icon">📊</div>
+                    <span>Data-backed decisions powering every campaign</span>
+                </div>
+                <div class="feature-item">
+                    <div class="fi-icon">💻</div>
+                    <span>High-converting websites built for speed and leads</span>
+                </div>
+                <div class="feature-item">
+                    <div class="fi-icon">🤖</div>
+                    <span>AI-powered workflows that eliminate manual effort</span>
+                </div>
+                <div class="feature-item">
+                    <div class="fi-icon">🚀</div>
+                    <span>Revenue-first growth strategies tailored to you</span>
+                </div>
             </div>
-            <button class="cta-btn" style="margin-top: 35px; padding: 14px 30px;">Begin Your Journey</button>
+            <div class="hero-buttons">
+                <button class="cta-btn" style="padding:13px 30px;font-size:14px;">Discover Services</button>
+                <button class="btn-outline">Begin Your Journey</button>
+            </div>
+        </div>
+
+        <!-- THALI ILLUSTRATION -->
+        <div class="hero-right">
+            <svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg" style="width:420px;height:420px;animation:thaliSpin 6s ease-in-out infinite;filter:drop-shadow(0 20px 60px rgba(255,107,0,0.2))">
+                <!-- Thali plate -->
+                <circle cx="220" cy="220" r="200" fill="#FEF3E2" stroke="#F5A623" stroke-width="3"/>
+                <circle cx="220" cy="220" r="193" fill="none" stroke="#FF6B00" stroke-width="1.5" stroke-dasharray="12 8"/>
+                <circle cx="220" cy="220" r="180" fill="none" stroke="rgba(245,166,35,0.3)" stroke-width="1"/>
+
+                <!-- Biryani mound center -->
+                <ellipse cx="220" cy="215" rx="70" ry="55" fill="#F5A623" opacity="0.8"/>
+                <ellipse cx="220" cy="205" rx="60" ry="42" fill="#FF6B00" opacity="0.7"/>
+                <ellipse cx="220" cy="200" rx="48" ry="32" fill="#E8A87C" opacity="0.9"/>
+                <!-- Rice grains -->
+                <g fill="#FFF8F0" opacity="0.8">
+                    <ellipse cx="205" cy="198" rx="5" ry="2" transform="rotate(20 205 198)"/>
+                    <ellipse cx="220" cy="192" rx="5" ry="2" transform="rotate(-10 220 192)"/>
+                    <ellipse cx="233" cy="200" rx="5" ry="2" transform="rotate(30 233 200)"/>
+                    <ellipse cx="212" cy="208" rx="5" ry="2" transform="rotate(-20 212 208)"/>
+                    <ellipse cx="228" cy="210" rx="5" ry="2" transform="rotate(15 228 210)"/>
+                    <ellipse cx="220" cy="205" rx="5" ry="2" transform="rotate(5 220 205)"/>
+                </g>
+                <!-- Saffron strands -->
+                <g stroke="#FF6B00" stroke-width="1.5" fill="none">
+                    <path d="M210 195 Q215 188 220 192"/>
+                    <path d="M225 195 Q230 187 235 193"/>
+                    <path d="M215 205 Q218 197 222 201"/>
+                </g>
+                <!-- Rose petals on biryani -->
+                <ellipse cx="210" cy="190" rx="6" ry="4" fill="#E8A87C" transform="rotate(30 210 190)"/>
+                <ellipse cx="230" cy="188" rx="6" ry="4" fill="#E8A87C" transform="rotate(-20 230 188)"/>
+
+                <!-- Dal bowl (top left) -->
+                <ellipse cx="130" cy="145" rx="42" ry="35" fill="#F5A623" opacity="0.6"/>
+                <ellipse cx="130" cy="142" rx="38" ry="30" fill="#FF6B00" opacity="0.4"/>
+                <ellipse cx="130" cy="140" rx="32" ry="24" fill="#FEB832" opacity="0.7"/>
+                <!-- Tadka drops -->
+                <circle cx="120" cy="136" r="3" fill="#C0392B" opacity="0.8"/>
+                <circle cx="133" cy="132" r="2.5" fill="#C0392B" opacity="0.8"/>
+                <circle cx="140" cy="140" r="2" fill="#C0392B" opacity="0.7"/>
+                <text x="126" y="156" font-size="10" fill="#8B4513" font-family="DM Sans" font-weight="600">Dal</text>
+
+                <!-- Sabzi bowl (top right) -->
+                <ellipse cx="310" cy="145" rx="42" ry="35" fill="#2D6A4F" opacity="0.5"/>
+                <ellipse cx="310" cy="142" rx="38" ry="30" fill="#1B4332" opacity="0.4"/>
+                <ellipse cx="310" cy="140" rx="32" ry="24" fill="#52B788" opacity="0.6"/>
+                <!-- Veggie chunks -->
+                <rect x="298" y="132" width="8" height="8" rx="2" fill="#FF6B00" opacity="0.8"/>
+                <rect x="310" y="130" width="9" height="7" rx="2" fill="#F5A623" opacity="0.8"/>
+                <rect x="318" y="135" width="7" height="8" rx="2" fill="#C0392B" opacity="0.7"/>
+                <text x="302" y="156" font-size="10" fill="#1B4332" font-family="DM Sans" font-weight="600">Sabzi</text>
+
+                <!-- Raita bowl (bottom right) -->
+                <ellipse cx="310" cy="295" rx="40" ry="33" fill="#FFF8F0" stroke="#F5A623" stroke-width="1.5"/>
+                <ellipse cx="310" cy="292" rx="34" ry="26" fill="white" opacity="0.9"/>
+                <!-- cucumber dots -->
+                <circle cx="302" cy="288" r="4" fill="#52B788" opacity="0.6"/>
+                <circle cx="314" cy="285" r="3.5" fill="#52B788" opacity="0.6"/>
+                <circle cx="320" cy="293" r="3" fill="#52B788" opacity="0.5"/>
+                <text x="303" y="305" font-size="10" fill="#5a4030" font-family="DM Sans" font-weight="600">Raita</text>
+
+                <!-- Chutney (bottom left) -->
+                <ellipse cx="130" cy="295" rx="40" ry="33" fill="#2D6A4F" opacity="0.4"/>
+                <ellipse cx="130" cy="292" rx="34" ry="26" fill="#52B788" opacity="0.6"/>
+                <text x="116" y="305" font-size="10" fill="#1B4332" font-family="DM Sans" font-weight="600">Chutney</text>
+
+                <!-- Roti (right side) -->
+                <ellipse cx="350" cy="218" rx="36" ry="28" fill="#E8A87C" opacity="0.7"/>
+                <ellipse cx="350" cy="216" rx="30" ry="22" fill="#F5C89A" opacity="0.8"/>
+                <!-- roti pattern -->
+                <circle cx="350" cy="216" r="18" fill="none" stroke="#E8A87C" stroke-width="1" opacity="0.6"/>
+                <circle cx="350" cy="216" r="10" fill="none" stroke="#E8A87C" stroke-width="1" opacity="0.4"/>
+                <text x="340" y="232" font-size="10" fill="#8B4513" font-family="DM Sans" font-weight="600">Roti</text>
+
+                <!-- Papad (left) -->
+                <ellipse cx="88" cy="218" rx="36" ry="28" fill="#FEB832" opacity="0.5"/>
+                <ellipse cx="88" cy="216" rx="30" ry="22" fill="#F5A623" opacity="0.4"/>
+                <!-- papad cracks -->
+                <line x1="75" y1="210" x2="100" y2="224" stroke="#E8A87C" stroke-width="1.5" opacity="0.7"/>
+                <line x1="80" y1="222" x2="100" y2="210" stroke="#E8A87C" stroke-width="1.5" opacity="0.7"/>
+                <text x="76" y="233" font-size="10" fill="#8B4513" font-family="DM Sans" font-weight="600">Papad</text>
+
+                <!-- Gulab Jamun (dessert top) -->
+                <ellipse cx="220" cy="88" rx="38" ry="28" fill="#C0392B" opacity="0.3"/>
+                <circle cx="210" cy="85" r="12" fill="#8B2500" opacity="0.7"/>
+                <circle cx="223" cy="88" r="11" fill="#A0300A" opacity="0.7"/>
+                <circle cx="233" cy="84" r="10" fill="#8B2500" opacity="0.6"/>
+                <text x="204" y="106" font-size="9" fill="#8B2500" font-family="DM Sans" font-weight="600">Gulab Jamun</text>
+
+                <!-- Nimbu (lemon) -->
+                <circle cx="220" cy="352" r="16" fill="#F5A623" opacity="0.8"/>
+                <circle cx="216" cy="350" r="10" fill="#FEB832" opacity="0.6"/>
+                <!-- lemon segments -->
+                <line x1="220" y1="337" x2="220" y2="367" stroke="#FF6B00" stroke-width="1" opacity="0.5"/>
+                <line x1="205" y1="352" x2="235" y2="352" stroke="#FF6B00" stroke-width="1" opacity="0.5"/>
+                <text x="210" y="375" font-size="9" fill="#8B4513" font-family="DM Sans" font-weight="600">Nimbu</text>
+
+                <!-- Decorative rim dots -->
+                <g fill="var(--saffron)" opacity="0.4">
+                    <circle cx="220" cy="22" r="4"/>
+                    <circle cx="220" cy="418" r="4"/>
+                    <circle cx="22" cy="220" r="4"/>
+                    <circle cx="418" cy="220" r="4"/>
+                    <circle cx="75" cy="75" r="3"/>
+                    <circle cx="365" cy="75" r="3"/>
+                    <circle cx="75" cy="365" r="3"/>
+                    <circle cx="365" cy="365" r="3"/>
+                </g>
+
+                <!-- Kolam / rangoli pattern on rim -->
+                <g fill="none" stroke="#FF6B00" stroke-width="1" opacity="0.2">
+                    <path d="M 220 28 Q 240 45 220 55 Q 200 45 220 28"/>
+                    <path d="M 220 385 Q 240 395 220 412 Q 200 395 220 385"/>
+                    <path d="M 28 220 Q 45 240 55 220 Q 45 200 28 220"/>
+                    <path d="M 385 220 Q 395 240 412 220 Q 395 200 385 220"/>
+                </g>
+            </svg>
         </div>
     </section>
 
-    <section class="benefits" id="features">
-        <h2>Why Choose WellnessFlow</h2>
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <div class="icon">🧘</div>
-                <h3>Mental Clarity</h3>
-                <p>Daily guided meditation and breathing exercises for peace and focus</p>
+    <!-- ═══════════ STATS STRIP ═══════════ -->
+    <div class="stats-strip">
+        <div class="stats-grid reveal">
+            <div class="stat-item">
+                <div class="stat-num" data-target="120">0</div>
+                <div class="stat-label">Projects Delivered</div>
             </div>
-            <div class="benefit-card">
-                <div class="icon">💪</div>
-                <h3>Physical Health</h3>
-                <p>Customized fitness plans adapted to your goals and fitness level</p>
+            <div class="stat-item">
+                <div class="stat-num" data-target="95" data-suffix="%">0</div>
+                <div class="stat-label">Client Retention</div>
             </div>
-            <div class="benefit-card">
-                <div class="icon">🍎</div>
-                <h3>Smart Nutrition</h3>
-                <p>Meal plans and recipes tailored to your dietary preferences</p>
+            <div class="stat-item">
+                <div class="stat-num" data-target="350" data-suffix="%">0</div>
+                <div class="stat-label">Average ROAS</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">24/7</div>
+                <div class="stat-label">Always On Support</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════ PHILOSOPHY ═══════════ -->
+    <section class="philosophy-section" id="about">
+        <div class="philo-intro reveal">
+            <span class="section-label">Our Core Recipe</span>
+            <h2>Outcomes Over Activity.<br><em>Clarity Over Confusion.</em></h2>
+            <p>Every move rooted in research. Every deliverable backed by intent. No inflated numbers, no scattered tactics — just real, measurable business progress. Like the perfect masala, every ingredient matters.</p>
+        </div>
+        <div class="philo-grid">
+            <div class="philo-card reveal">
+                <span class="philo-icon">🔍</span>
+                <h3>Insights First</h3>
+                <p>Every project and campaign kicks off with thorough market research and data analysis. Like a chef mastering a recipe before cooking for guests.</p>
+            </div>
+            <div class="philo-card reveal" style="transition-delay:.1s">
+                <span class="philo-icon">🎯</span>
+                <h3>Revenue Oriented</h3>
+                <p>Attention locked on conversions, sales growth, and customer acquisition — the true nourishment of any thriving business.</p>
+            </div>
+            <div class="philo-card reveal" style="transition-delay:.2s">
+                <span class="philo-icon">⚙️</span>
+                <h3>Automation Driven</h3>
+                <p>Smart AI systems let your business move faster without adding headcount — more output from the same kitchen.</p>
             </div>
         </div>
     </section>
 
-    <section class="testimonials" id="testimonials">
-        <h2>Real Results from Real People</h2>
-        <div class="testimonial-grid">
-            <div class="testimonial">
-                <p>"WellnessFlow changed my life. I lost 20 pounds and feel more energized than ever. The personalized coaching is amazing!"</p>
-                <div class="testimonial-author">— Sarah M.</div>
+    <!-- ═══════════ PROCESS ═══════════ -->
+    <section class="process-section" id="process">
+        <div class="section-header reveal">
+            <span class="section-label">How We Cook It</span>
+            <h2>Our <em>4-Step</em> Growth Recipe</h2>
+            <p>Structured execution designed to produce measurable, lasting growth. Every step crafted with care.</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-card reveal" data-step="01">
+                <div class="step-badge">01</div>
+                <h3>Discovery</h3>
+                <p>We dive deep into your market landscape, study your competition, and pinpoint exactly who your audience is — and what they need to convert into loyal customers.</p>
             </div>
-            <div class="testimonial">
-                <p>"Finally found a wellness app that actually works. The nutrition guidance and meditation features are exactly what I needed."</p>
-                <div class="testimonial-author">— John D.</div>
+            <div class="process-card reveal" data-step="02" style="transition-delay:.1s">
+                <div class="step-badge">02</div>
+                <h3>Roadmapping</h3>
+                <p>A precise, step-by-step growth plan crafted with clear milestones — built entirely around your business objectives and timeline, no one-size-fits-all templates.</p>
             </div>
-            <div class="testimonial">
-                <p>"Best investment in my health. The community support and daily reminders keep me motivated and on track."</p>
-                <div class="testimonial-author">— Emma L.</div>
+            <div class="process-card reveal" data-step="03" style="transition-delay:.15s">
+                <div class="step-badge">03</div>
+                <h3>Delivery</h3>
+                <p>We bring the plan to life — deploying marketing campaigns, development projects, and automation systems with surgical precision and transparent communication.</p>
+            </div>
+            <div class="process-card reveal" data-step="04" style="transition-delay:.2s">
+                <div class="step-badge">04</div>
+                <h3>Optimisation</h3>
+                <p>Performance continuously monitored and refined using live analytics and actionable insights — compounding your results over time like a perfectly aged spice blend.</p>
             </div>
         </div>
     </section>
 
-    <section class="cta" id="contact">
-        <h2>Ready to Transform Your Health?</h2>
-        <p>Join 50,000+ people living their best lives</p>
-        <button style="background: white; color: #7BA65F; padding: 14px 35px; border-radius: 50px; border: none; cursor: pointer; font-weight: 700; font-size: 14px;">Download App Now</button>
+    <!-- ═══════════ SERVICES ═══════════ -->
+    <section class="services-section" id="services">
+        <div class="section-header reveal">
+            <span class="section-label">What We Serve</span>
+            <h2>Our <em>Full Menu</em> of Services</h2>
+            <p>Every offering is built around one goal — growing your business with purpose and precision.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="svc-icon">📣</div>
+                <h3>Performance Marketing</h3>
+                <p>SEO, paid ads, social media, email campaigns and analytics — all driven by data and engineered for maximum ROI.</p>
+                <span class="svc-tag">↗ Full funnel</span>
+            </div>
+            <div class="service-card reveal" style="transition-delay:.08s">
+                <div class="svc-icon">🌐</div>
+                <h3>Web Development</h3>
+                <p>Lead-generating websites optimized for speed, conversions, and relentless performance across every device.</p>
+                <span class="svc-tag">↗ Conversion-first</span>
+            </div>
+            <div class="service-card reveal" style="transition-delay:.16s">
+                <div class="svc-icon">🛠️</div>
+                <h3>Full Stack Apps</h3>
+                <p>Web apps, SaaS platforms, APIs and scalable systems built to handle real growth without breaking a sweat.</p>
+                <span class="svc-tag">↗ Scalable</span>
+            </div>
+            <div class="service-card reveal" style="transition-delay:.24s">
+                <div class="svc-icon">🔬</div>
+                <h3>Market Research</h3>
+                <p>Competitor benchmarking, industry analysis and deep customer insights to sharpen every strategic decision you make.</p>
+                <span class="svc-tag">↗ Intel-driven</span>
+            </div>
+            <div class="service-card reveal" style="transition-delay:.32s">
+                <div class="svc-icon">🤖</div>
+                <h3>AI Automation</h3>
+                <p>CRM automation, intelligent workflow systems and AI tools that multiply your team's output without expanding headcount.</p>
+                <span class="svc-tag">↗ 10x efficiency</span>
+            </div>
+            <div class="service-card reveal" style="transition-delay:.4s">
+                <div class="svc-icon">📈</div>
+                <h3>Growth Strategy</h3>
+                <p>Revenue-focused scaling strategies tailored specifically to your business model — not copied from a template.</p>
+                <span class="svc-tag">↗ Revenue-first</span>
+            </div>
+        </div>
     </section>
 
+    <!-- ═══════════ PORTFOLIO ═══════════ -->
+    <section class="portfolio-section" id="portfolio">
+        <div class="section-header reveal">
+            <span class="section-label">Our Signature Dishes</span>
+            <h2>Results That <em>Speak</em> for Themselves</h2>
+            <p>Each engagement began with a challenge — and ended with a breakthrough worth celebrating.</p>
+        </div>
+        <div class="port-grid">
+            <div class="port-card reveal">
+                <span class="port-emoji">🛒</span>
+                <h3>E-Commerce Revenue Acceleration</h3>
+                <p>Delivered 210% revenue growth over 5 months through targeted SEO and precision paid media campaigns — consistent, compound results.</p>
+                <span class="port-badge">+210% Revenue</span>
+            </div>
+            <div class="port-card reveal" style="transition-delay:.1s">
+                <span class="port-emoji">💡</span>
+                <h3>SaaS Conversion Transformation</h3>
+                <p>Lifted conversion rate from 1.2% to 4.7% through data-informed landing page redesign and user experience overhaul.</p>
+                <span class="port-badge">+292% CVR</span>
+            </div>
+            <div class="port-card reveal" style="transition-delay:.2s">
+                <span class="port-emoji">⚡</span>
+                <h3>Business Process Automation</h3>
+                <p>Eliminated 60% of repetitive manual tasks using AI workflows — effectively doubling monthly team output with zero new hires.</p>
+                <span class="port-badge">2× Output</span>
+            </div>
+        </div>
+        <div class="view-more reveal">
+            <button class="cta-btn" style="padding:13px 36px;font-size:14px;">View Full Portfolio</button>
+        </div>
+    </section>
+
+    <!-- ═══════════ TESTIMONIALS ═══════════ -->
+    <section class="testi-section" id="testimonials">
+        <div class="section-header reveal">
+            <span class="section-label">Client Reviews</span>
+            <h2>Voices from Our <em>Satisfied Clients</em></h2>
+            <p>Real feedback from businesses that chose growth over guesswork — and never looked back.</p>
+        </div>
+        <div class="testi-grid">
+            <div class="testi-card reveal">
+                <span class="quote-mark">"</span>
+                <p>Fovorse completely reimagined our digital direction and more than doubled our inbound leads. Their approach is refreshingly strategic.</p>
+                <div class="testi-author">
+                    <div class="author-avatar">🚀</div>
+                    <div>
+                        <div class="author-name">Founder, Early-Stage Startup</div>
+                        <div class="author-role">Tech Sector</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testi-card reveal" style="transition-delay:.1s">
+                <span class="quote-mark">"</span>
+                <p>Refreshing to work with an agency that cares about real outcomes — not just impressions and vanity clicks. ROI was evident within weeks.</p>
+                <div class="testi-author">
+                    <div class="author-avatar">📊</div>
+                    <div>
+                        <div class="author-name">Growth Lead, SaaS Platform</div>
+                        <div class="author-role">B2B Software</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testi-card reveal" style="transition-delay:.2s">
+                <span class="quote-mark">"</span>
+                <p>Within six months our revenue had doubled. Partnering with Fovorse was the best business decision we made this year — hands down.</p>
+                <div class="testi-author">
+                    <div class="author-avatar">🛒</div>
+                    <div>
+                        <div class="author-name">Director, E-Commerce Brand</div>
+                        <div class="author-role">Retail & D2C</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ CTA ═══════════ -->
+    <section class="cta-section" id="contact">
+        <div class="cta-food-row" aria-hidden="true">
+            🍛🌶️🫓🍲🥘🫕🧆🍱🌿🍛🌶️🫓🍲🥘🫕🧆🍱🌿
+        </div>
+        <span class="section-label" style="color:var(--turmeric);">Ready to Scale?</span>
+        <h2>Let's <em>Accelerate</em> Your Business</h2>
+        <p>Map out your growth path and build a plan that moves the needle — starting today.</p>
+        <button class="cta-btn-white">Kick Off Your Growth 🌶️</button>
+    </section>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
     <footer>
-        <h3>WellnessFlow</h3>
-        <p>Your partner in health and wellness • 2026</p>
+        <h3>FOVORSE</h3>
+        <div class="footer-spices">🌿 🌶️ 🫛 🧄 🫚</div>
+        <p>Your strategy-led partner for intelligent, sustainable business growth.</p>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p style="margin-top:10px;">© 2026 Fovorse. All Rights Reserved. — It's Growth Time.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+    // ─── FLOATING FOOD PARTICLES ───
+    const foods = ['🍛','🌶️','🫛','🥘','🫓','🧆','🌿','🍲','🥗','🧄','🫚','🌰','🫕','🍱'];
+    const container = document.getElementById('floatingFood');
+    for(let i=0;i<30;i++) {
+        const el = document.createElement('div');
+        el.className = 'float-food';
+        el.textContent = foods[Math.floor(Math.random()*foods.length)];
+        el.style.left = Math.random()*100 + '%';
+        el.style.fontSize = (55 + Math.random()*45) + 'px';
+        el.style.animationDuration = (10 + Math.random()*10) + 's';
+        el.style.animationDelay = (Math.random()*12) + 's';
+        container.appendChild(el);
+    }
+
+    // ─── CANVAS: Indian food patterns ───
+    const canvas = document.getElementById('foodCanvas');
+    const ctx = canvas.getContext('2d');
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resize(); window.addEventListener('resize', resize);
+
+    // Spice particles
+    const spiceParticles = [];
+    const spiceColors = ['rgba(255,107,0,0.75)','rgba(245,166,35,0.70)','rgba(192,57,43,0.65)','rgba(45,106,79,0.60)','rgba(232,168,124,0.70)'];
+    for(let i=0;i<80;i++) {
+        spiceParticles.push({
+            x: Math.random()*canvas.width, y: Math.random()*canvas.height,
+            r: Math.random()*6+3,
+            vx: (Math.random()-.5)*0.3, vy: (Math.random()-.5)*0.25,
+            color: spiceColors[Math.floor(Math.random()*spiceColors.length)],
+            pulse: Math.random()*Math.PI*2, pSpeed: 0.02+Math.random()*0.02,
+        });
+    }
+
+    // Mandala rings
+    function drawMandala(x, y, r, t, alpha) {
+        ctx.save(); ctx.globalAlpha = alpha; ctx.translate(x, y);
+        // petal ring
+        for(let i=0;i<12;i++) {
+            const angle = (i/12)*Math.PI*2 + t;
+            const px = Math.cos(angle)*r*0.55, py = Math.sin(angle)*r*0.55;
+            ctx.beginPath(); ctx.ellipse(px, py, r*0.12, r*0.22, angle, 0, Math.PI*2);
+            ctx.strokeStyle = '#FF6B00'; ctx.lineWidth = 1; ctx.stroke();
+        }
+        // inner ring
+        ctx.beginPath(); ctx.arc(0,0,r*0.35,0,Math.PI*2);
+        ctx.strokeStyle = '#F5A623'; ctx.lineWidth = 1.5; ctx.stroke();
+        // center
+        ctx.beginPath(); ctx.arc(0,0,r*0.12,0,Math.PI*2);
+        ctx.fillStyle = 'rgba(255,107,0,0.15)'; ctx.fill();
+        // spoke dots
+        for(let i=0;i<8;i++) {
+            const a = (i/8)*Math.PI*2+t*0.5;
+            ctx.beginPath(); ctx.arc(Math.cos(a)*r*0.35, Math.sin(a)*r*0.35, 2, 0, Math.PI*2);
+            ctx.fillStyle = '#F5A623'; ctx.fill();
+        }
+        ctx.restore();
+    }
+
+    // Kolam dots pattern
+    function drawKolam(x, y, size, t) {
+        ctx.save(); ctx.globalAlpha = 0.45; ctx.translate(x, y);
+        const dotR = size*0.06;
+        for(let row=-3;row<=3;row++) {
+            for(let col=-3;col<=3;col++) {
+                const dist = Math.sqrt(row*row+col*col);
+                if(dist<3.5) {
+                    const pulse = 0.5+0.5*Math.sin(t+dist);
+                    ctx.beginPath();
+                    ctx.arc(col*size*0.35, row*size*0.35, dotR*pulse, 0, Math.PI*2);
+                    ctx.fillStyle = '#FF6B00'; ctx.fill();
+                }
+            }
+        }
+        // connecting lines
+        ctx.strokeStyle = '#F5A623'; ctx.lineWidth = 0.8;
+        for(let i=0;i<6;i++) {
+            const a = (i/6)*Math.PI*2+t*0.1;
+            ctx.beginPath();
+            ctx.moveTo(Math.cos(a)*size*0.15, Math.sin(a)*size*0.15);
+            ctx.lineTo(Math.cos(a)*size*0.9, Math.sin(a)*size*0.9);
+            ctx.stroke();
+        }
+        ctx.restore();
+    }
+
+    // Rangoli arcs
+    function drawRangoli(x, y, r, t) {
+        ctx.save(); ctx.globalAlpha = 0.45; ctx.translate(x,y);
+        for(let ring=1;ring<=4;ring++) {
+            for(let i=0;i<ring*6;i++) {
+                const angle = (i/(ring*6))*Math.PI*2+t*0.2*(ring%2===0?1:-1);
+                const rx = Math.cos(angle)*r*ring*0.25;
+                const ry = Math.sin(angle)*r*ring*0.25;
+                ctx.beginPath(); ctx.arc(rx, ry, 3, 0, Math.PI*2);
+                const colors = ['#FF6B00','#F5A623','#2D6A4F','#C0392B'];
+                ctx.fillStyle = colors[(ring-1)%4]; ctx.fill();
+            }
+        }
+        ctx.restore();
+    }
+
+    let t = 0;
+    const mandalas = [
+        {x:0.1,y:0.15,r:120},{x:0.9,y:0.2,r:100},
+        {x:0.85,y:0.75,r:130},{x:0.05,y:0.8,r:110},
+        {x:0.5,y:0.05,r:80},
+    ];
+
+    // ─── CANVAS FOOD EMOJIS ───
+    const canvasFoods = ['🍛','🌶️','🫛','🥘','🫓','🧆','🌿','🍲','🥗','🧄','🫚','🌰','🫕','🍱','🍜','🥙'];
+    const foodItems = [];
+    for(let i=0;i<22;i++) {
+        foodItems.push({
+            x: Math.random()*window.innerWidth,
+            y: Math.random()*window.innerHeight,
+            emoji: canvasFoods[Math.floor(Math.random()*canvasFoods.length)],
+            size: 40 + Math.random()*50,
+            vx: (Math.random()-.5)*0.5,
+            vy: -0.4 - Math.random()*0.5,
+            rot: Math.random()*Math.PI*2,
+            rotSpeed: (Math.random()-.5)*0.015,
+            alpha: 0.25 + Math.random()*0.45,
+            phase: Math.random()*Math.PI*2,
+        });
+    }
+
+    function animate() {
+        requestAnimationFrame(animate); t+=0.008;
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+
+        // Draw food emojis on canvas
+        foodItems.forEach(f => {
+            f.x += f.vx; f.y += f.vy; f.rot += f.rotSpeed; f.phase += 0.02;
+            if(f.y < -100) { f.y = canvas.height + 50; f.x = Math.random()*canvas.width; }
+            if(f.x < -80) f.x = canvas.width+80;
+            if(f.x > canvas.width+80) f.x = -80;
+            const wobble = Math.sin(f.phase) * 0.15;
+            ctx.save();
+            ctx.globalAlpha = f.alpha * (0.7 + 0.3*Math.sin(f.phase));
+            ctx.translate(f.x, f.y);
+            ctx.rotate(f.rot + wobble);
+            ctx.font = f.size + 'px serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(f.emoji, 0, 0);
+            ctx.restore();
+        });
+
+        // Mandala backgrounds
+        mandalas.forEach((m,i) => {
+            drawMandala(m.x*canvas.width, m.y*canvas.height, m.r, t*(i%2===0?1:-1)*0.4, 0.55);
+        });
+
+        // Kolam patterns
+        drawKolam(canvas.width*0.25, canvas.height*0.5, 80, t);
+        drawKolam(canvas.width*0.75, canvas.height*0.5, 80, t+1);
+        drawKolam(canvas.width*0.5, canvas.height*0.85, 70, t+2);
+
+        // Rangoli
+        drawRangoli(canvas.width*0.15, canvas.height*0.6, 90, t);
+        drawRangoli(canvas.width*0.85, canvas.height*0.4, 90, t+0.5);
+
+        // Spice particles
+        spiceParticles.forEach(p => {
+            p.x+=p.vx; p.y+=p.vy; p.pulse+=p.pSpeed;
+            if(p.x<-10) p.x=canvas.width+10;
+            if(p.x>canvas.width+10) p.x=-10;
+            if(p.y<-10) p.y=canvas.height+10;
+            if(p.y>canvas.height+10) p.y=-10;
+            const alpha = (0.3+0.3*Math.sin(p.pulse));
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.r*(0.7+0.3*Math.sin(p.pulse)), 0, Math.PI*2);
+            ctx.fillStyle = p.color; ctx.fill();
+        });
+
+        // Particle connections
+        for(let i=0;i<spiceParticles.length;i++) {
+            for(let j=i+1;j<spiceParticles.length;j++) {
+                const dx=spiceParticles[i].x-spiceParticles[j].x;
+                const dy=spiceParticles[i].y-spiceParticles[j].y;
+                const d=Math.sqrt(dx*dx+dy*dy);
+                if(d<80) {
+                    ctx.beginPath();
+                    ctx.moveTo(spiceParticles[i].x,spiceParticles[i].y);
+                    ctx.lineTo(spiceParticles[j].x,spiceParticles[j].y);
+                    ctx.strokeStyle=`rgba(255,107,0,${0.06*(1-d/80)})`;
+                    ctx.lineWidth=0.8; ctx.stroke();
+                }
+            }
+        }
+    }
+    animate();
+
+
+    // ─── CUSTOM CURSOR ───
+    const curRing  = document.getElementById('curRing');
+    const curFood  = document.getElementById('curFood');
+    const trails   = [
+        document.getElementById('curTrail1'),
+        document.getElementById('curTrail2'),
+        document.getElementById('curTrail3'),
+    ];
+
+    const foodEmojis = ['🍛','🌶️','🫕','🥘','🧆','🌿','🫓','🥗','🧄'];
+    let foodIdx = 0;
+    let mx = -100, my = -100;
+    let trailPos = trails.map(() => ({ x:-100, y:-100 }));
+    let prevX = -100, prevY = -100;
+
+    // Cycle emoji every 2s
+    setInterval(() => {
+        foodIdx = (foodIdx + 1) % foodEmojis.length;
+        curFood.textContent = foodEmojis[foodIdx];
+    }, 2000);
+
+    document.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+
+        curRing.style.left  = mx + 'px';
+        curRing.style.top   = my + 'px';
+        curFood.style.left  = mx + 'px';
+        curFood.style.top   = my + 'px';
+
+        // Staggered trail
+        setTimeout(() => {
+            trails[0].style.left = e.clientX + 'px';
+            trails[0].style.top  = e.clientY + 'px';
+        }, 60);
+        setTimeout(() => {
+            trails[1].style.left = e.clientX + 'px';
+            trails[1].style.top  = e.clientY + 'px';
+        }, 130);
+        setTimeout(() => {
+            trails[2].style.left = e.clientX + 'px';
+            trails[2].style.top  = e.clientY + 'px';
+        }, 210);
+
+        // Leave a spice particle on fast move
+        const dx = mx - prevX, dy = my - prevY;
+        const speed = Math.sqrt(dx*dx + dy*dy);
+        if(speed > 18) { spawnSpiceTrail(mx, my); }
+        prevX = mx; prevY = my;
+    });
+
+    // Hover effect
+    const hoverTargets = document.querySelectorAll('button, a, .feature-item, .philo-card, .service-card, .port-card, .testi-card, .process-card, .stat-item');
+    hoverTargets.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            curRing.classList.add('hovered');
+            curFood.classList.add('hovered');
+        });
+        el.addEventListener('mouseleave', () => {
+            curRing.classList.remove('hovered');
+            curFood.classList.remove('hovered');
+        });
+    });
+
+    // Spice trail particle on fast move
+    function spawnSpiceTrail(x, y) {
+        const dot = document.createElement('div');
+        dot.style.cssText = `
+            position:fixed; pointer-events:none; z-index:99997;
+            left:${x}px; top:${y}px;
+            font-size:${14+Math.random()*12}px;
+            transform:translate(-50%,-50%);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            opacity:0.8;
+        `;
+        const spices = ['·','✦','⬡','🌶','✿','◆'];
+        dot.textContent = spices[Math.floor(Math.random()*spices.length)];
+        dot.style.color = ['#FF6B00','#F5A623','#C0392B','#2D6A4F'][Math.floor(Math.random()*4)];
+        document.body.appendChild(dot);
+        requestAnimationFrame(() => {
+            dot.style.opacity = '0';
+            dot.style.transform = `translate(-50%,-50%) translateY(-${20+Math.random()*30}px) scale(0.3)`;
+        });
+        setTimeout(() => dot.remove(), 900);
+    }
+
+    // ─── PROGRESS BAR ───
+    window.addEventListener('scroll', () => {
+        const s=window.scrollY, total=document.body.scrollHeight-window.innerHeight;
+        document.getElementById('progressBar').style.width=(s/total*100)+'%';
+        document.getElementById('header').classList.toggle('scrolled', s>60);
+    });
+
+    // ─── SCROLL REVEAL ───
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left');
+    const ro = new IntersectionObserver(entries => {
+        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, {threshold:0.1});
+    revealEls.forEach(r => ro.observe(r));
+
+    // ─── COUNTER ───
+    document.querySelectorAll('.stat-num[data-target]').forEach(el => {
+        const co = new IntersectionObserver(entries => {
+            if(entries[0].isIntersecting) {
+                const target=+el.dataset.target, suffix=el.dataset.suffix||'+';
+                let c=0; const inc=target/55;
+                const tick=()=>{ c=Math.min(c+inc,target); el.textContent=Math.ceil(c)+suffix; if(c<target) requestAnimationFrame(tick); };
+                tick(); co.unobserve(el);
+            }
+        },{threshold:0.5});
+        co.observe(el);
+    });
+    </script>
 </body>
 </html>
